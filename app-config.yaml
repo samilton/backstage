@@ -3,7 +3,7 @@ app:
   baseUrl: http://localhost:3000
 
 organization:
-  name: My Company
+  name: Elliott Management
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -15,8 +15,7 @@ backend:
   baseUrl: http://localhost:7007
   listen:
     port: 7007
-    # Uncomment the following host directive to bind to all IPv4 interfaces and
-    # not just the baseUrl hostname.
+    # Uncomment the following host directive to bind to all IPv4 interfaces and not just the baseUrl hostname.
     # host: 0.0.0.0
   csp:
     connect-src: ["'self'", 'http:', 'https:']
@@ -33,6 +32,12 @@ backend:
     connection: ':memory:'
   cache:
     store: memory
+  reading:
+    allow: 
+      - host: "localhost:7070"
+      - host: "0.0.0.0:7070"
+      - host: "0.0.0.0"
+      - host: "elliottmgmtdev.service-now.com"
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
 integrations:
@@ -77,12 +82,17 @@ catalog:
     - allow: [Component, System, API, Resource, Location]
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
-    - type: file
-      target: ../../examples/entities.yaml
+    #- type: file
+    #  target: ../../examples/entities.yaml
 
     # Local example template
     - type: file
       target: ../../examples/template/template.yaml
+      rules:
+        - allow: [Template]
+
+    - type: file
+      target: ../../rust/template/template.yaml
       rules:
         - allow: [Template]
 
