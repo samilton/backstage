@@ -6,6 +6,14 @@ import {
     EntityProviderConnection,
 } from '@backstage/plugin-catalog-node';
 
+interface ServiceNowRecord {
+    name: string,
+    short_description: string,
+    install_type: string,
+    platform: string,
+    application_type: string,
+}
+
 export class SnowProvider implements EntityProvider {
     private readonly env: string;
     private readonly reader: UrlReader;
@@ -20,9 +28,9 @@ export class SnowProvider implements EntityProvider {
         return `snow-${this.env}`;
     }
 
-    snowToEntities(data: Object): Entity[] {
+    snowToEntities(data: ServiceNowRecord[]): Entity[] {
         var entities: Entity[] = [];
-        let i: int = 0;
+        let i = 0;
 
         for (let snowApp of data) {
 
