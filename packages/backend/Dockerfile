@@ -1,3 +1,14 @@
+# This dockerfile builds an image for the backend package.
+# It should be executed with the root of the repo as docker context.
+#
+# Before building this image, be sure to have run the following commands in the repo root:
+#
+# yarn install
+# yarn tsc
+# yarn build
+#
+# Once the commands have been run, you can build the image using `yarn build-image`
+
 FROM node:16-bullseye-slim
 
 # Install sqlite3 dependencies. You can skip this if you don't use sqlite3 in the image,
@@ -5,10 +16,14 @@ FROM node:16-bullseye-slim
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update && \
-    apt-get install -y --no-install-recommends libsqlite3-dev python3 build-essential ca-certificates curl dos2unix iputils-ping netcat-openbsd && \
+    apt-get install -y --no-install-recommends \
+        libsqlite3-dev \
+        python3 \
+        ca-certificates \
+        curl \
+        dos2unix \
+        build-essential && \
     yarn config set python /usr/bin/python3
-
-EXPOSE 7007
 
 # get Elliott certificates
 RUN for cert_name in EMC-PA-Root-CA.crt EMC-NY-CA01.crt EMC-PA-CA01.crt; do \
@@ -19,15 +34,12 @@ RUN for cert_name in EMC-PA-Root-CA.crt EMC-NY-CA01.crt EMC-PA-CA01.crt; do \
     done && \
     update-ca-certificates
 
-
 # From here on we use the least-privileged `node` user to run the backend.
 USER node
 
 RUN npm config set cafile /etc/ssl/certs/ca-certificates.crt && \
     npm config set registry https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-virtual/
 ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
-
-ADD examples/ /examples
 
 # This should create the app dir as `node`.
 # If it is instead created as `root` then the `tar` command below will fail: `can't create directory 'packages/': Permission denied`.
@@ -50,4 +62,4 @@ RUN --mount=type=cache,target=/home/node/.cache/yarn,sharing=locked,uid=1000,gid
 COPY --chown=node:node packages/backend/dist/bundle.tar.gz app-config*.yaml ./
 RUN tar xzf bundle.tar.gz && rm bundle.tar.gz
 
-CMD ["node", "packages/backend", "--config", "app-config.yaml"]
+CMD ["node", "packages/backend", "--config", "app-config.yaml", "--config", "app-config.production.yaml"]

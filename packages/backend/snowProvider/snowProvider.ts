@@ -37,7 +37,7 @@ export class SnowProvider implements EntityProvider {
             console.log(snowApp.name);
             // santize the name according to https://github.com/backstage/backstage/blob/master/docs/architecture-decisions/adr002-default-catalog-file-format.md#name
 
-            var name = snowApp.name.replace(/ /gi, "-").replace(/[\(\)\']/gi, "").replace(/\//gi, "").toLowerCase();
+            var name = snowApp.name.replace(/ /gi, "-").replace(/[\(\)\,\']/gi, "").replace(/\//gi, "").toLowerCase();
 
             console.log(name);
             var e: Entity = {
@@ -47,8 +47,8 @@ export class SnowProvider implements EntityProvider {
                     name: name,
                     description: snowApp.short_description,
                     annotations: {
-                        "backstage.io/managed-by-location": "url:http://0.0.0.0:7070/",
-                        "backstage.io/managed-by-origin-location": "url:http://0.0.0.0:7070/",
+                        "backstage.io/managed-by-location": "url:http://backstage.kube-dev-cs-1.elliottmgmt.com/",
+                        "backstage.io/managed-by-origin-location": "url:http://backstage.kube-dev-cs-1.elliottmgmt.com/",
                         "ellittmgmt.com/install_type": snowApp.install_type,
                     },
                     "links": [
@@ -91,10 +91,7 @@ export class SnowProvider implements EntityProvider {
         }
 
         const raw = await this.reader.read(
-            //`https://snow-proxy-${this.env}.kube-dev-cs-1.elliottmgmt.com:7070/`
-            //`http://0.0.0.0:7070/sample.json`
             `https://artifactory.elliottmgmt.com/artifactory/file-store/backstage/sample.json`
-            //`https://elliottmgmtdev.service-now.com/api/ealp/v1/cmdb_api/list`
         );
 
         console.log("Loading remote data");

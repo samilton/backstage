@@ -1,6 +1,6 @@
 app:
   title: Scaffolded Backstage App
-  baseUrl: http://localhost:3000
+  baseUrl: https://backstage.kube-dev-cs-1.elliottmgmt.com
 
 organization:
   name: Elliott Management
@@ -12,7 +12,7 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
-  baseUrl: http://localhost:7007
+  baseUrl: https://backstage.kube-dev-cs-1.elliottmgmt.com
   listen:
     port: 7007
     # Uncomment the following host directive to bind to all IPv4 interfaces and not just the baseUrl hostname.
