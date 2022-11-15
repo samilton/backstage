@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "app.name" $ }}
+  namespace: {{ .Values.monitoring.namespace }}
+  labels:
+    {{- include "standardLabels" $ | nindent 4 }}
+    prometheus: {{ .Values.monitoring.prometheusInstance }}
+spec:
+  endpoints:
+  - interval: 10s
+    path: /metrics
+    port: app
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}
+  targetLabels:
+  - app.kubernetes.io/name
+  - app.kubernetes.io/version
+  - helm.sh/chart
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ template "app.name" $ }}

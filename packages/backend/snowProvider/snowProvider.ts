@@ -84,7 +84,8 @@ export class SnowProvider implements EntityProvider {
 
         const raw = await this.reader.read(
             //`https://snow-proxy-${this.env}.kube-dev-cs-1.elliottmgmt.com:7070/`
-            `http://0.0.0.0:7070/sample.json`
+            //`http://0.0.0.0:7070/sample.json`
+            `https://artifactory.elliottmgmt.com/artifactory/file-store/backstage/sample.json`
             //`https://elliottmgmtdev.service-now.com/api/ealp/v1/cmdb_api/list`
         );
 

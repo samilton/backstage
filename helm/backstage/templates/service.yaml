@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "app.name" $ }}
+  labels:
+    {{- include "standardLabels" $ | nindent 4 }}
+spec:
+  type: ClusterIP
+  # this service will not have an internal IP address if clusterIP is set to None
+  # remove the line below if you will be accessing this service withing the k8s cluster
+  # clusterIP is not mutable - service must be removed to make a change
+  clusterIP: None
+  ports:
+  - name: app
+    protocol: TCP
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.app.port }}
+  selector:
+    {{- include "matchLabels" $ | nindent 4 }}
+

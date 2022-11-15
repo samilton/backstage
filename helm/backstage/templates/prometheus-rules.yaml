@@ -1,0 +1,20 @@
+{{- range .Values.monitoring.prometheusRules }}
+{{- $ruleName := . }}
+{{- $rulesFile := printf "files/prometheus-rules/%s.yaml" $ruleName }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: 'prometheus-rules-{{ $.Release.Name }}-{{ $ruleName }}'
+  namespace: {{ $.Values.monitoring.namespace }}
+  labels:
+    {{- include "standardLabels" $ | nindent 4 }}
+    prometheus: {{ $.Values.monitoring.prometheusInstance }}
+    role: alert-rules
+spec:
+  groups:
+    - name: ./{{ $ruleName }}.rules
+      rules:
+{{- $.Files.Get $rulesFile | nindent 8 }}
+
+{{- end }}

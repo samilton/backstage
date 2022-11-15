@@ -1,0 +1,18 @@
+{{- range .Values.monitoring.grafanaDashboards }}
+{{- $dashboardName := . }}
+{{- $dashboardFile := printf "files/grafana-dashboards/%s.json" $dashboardName }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'grafana-dashboard-{{ template "app.name" $ }}-{{ $dashboardName }}'
+  namespace: {{ $.Values.monitoring.namespace }}
+  labels:
+    {{- include "standardLabels" $ | nindent 4 }}
+    grafanaDashboard: {{ $dashboardName }}
+    app: grafana-dashboard
+data:
+  {{ $dashboardName }}.json: |
+{{- $.Files.Get $dashboardFile | nindent 4 }}
+
+{{- end }}

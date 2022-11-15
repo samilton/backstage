@@ -1,0 +1,54 @@
+replicaCount: 1
+
+env: dev
+nameOverride: backstage
+
+image:
+  name: artifactory.elliottmgmt.com/docker-elliott-core/backstage/backstage
+  tag: "latest"
+  pullPolicy: Always
+
+labels:
+  partOf: missionctl
+
+app:
+  logLevel: info
+  port: 7007
+
+ingress:
+  host: backstage.kube-dev-cs-1.elliottmgmt.com
+  serverAlias: backstage.elliottmgmt.com
+  cert: kube-wildcard
+  nginxProxyConnectTimeout: 600
+  nginxProxyReadTimeout: 600
+  nginxProxySendTimeout: 600
+  nginxProxyBodySize: 30m
+
+service:
+  port: 80
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 200Mi
+  limits:
+    cpu: 250m
+    memory: 200Mi
+
+monitoring:
+  namespace: playground-infra
+  prometheusInstance: playground
+  prometheusRules: []
+  grafanaDashboards: []
+  serviceMonitor:
+    enabled: false
+
+affinity:
+
+tolerations:
+
+environmentVariables:
+  - name: JAEGER_AGENT_HOST
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP

@@ -1,0 +1,12 @@
+env: dev
+
+environmentVariables:
+  - name: JAEGER_AGENT_HOST
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP
+
+ingress:
+  host: k8s-dash-app.kube-dev-cs-1.elliottmgmt.com
+  serverAlias: k8s-dash-app-dev.elliottmgmt.com
+  cert: kube-wildcard

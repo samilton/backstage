@@ -1,0 +1,6 @@
+env: dev
+
+ingress:
+  host: k8s-dash-app.kube-dev-ln-1.elliottmgmt.co.uk
+  serverAlias: k8s-dash-app-dev.elliottmgmt.co.ok
+  cert: kube-wildcard
