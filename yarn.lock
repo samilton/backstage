@@ -178,7 +178,7 @@
     "@azure/abort-controller" "^1.0.0"
     tslib "^2.2.0"
 
-"@azure/identity@^2.0.1":
+"@azure/identity@^2.0.1", "@azure/identity@^2.0.4":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@azure/identity/-/identity-2.1.0.tgz#89f0bfc1d1264dfd3d0cb19837c33a9c6706d548"
   integrity sha512-BPDz1sK7Ul9t0l9YKLEa8PHqWU4iCfhGJ+ELJl6c8CP3TpJt2urNCbm0ZHsthmxRsYoMPbz2Dvzj30zXZVmAFw==
@@ -1319,6 +1319,63 @@
     yauzl "^2.10.0"
     yn "^4.0.0"
 
+"@backstage/backend-common@^0.16.0":
+  version "0.16.0"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/backend-common/-/backend-common-0.16.0.tgz#cc26f26741a7ff208df28074d8e9395da2e87e09"
+  integrity sha512-k2Tfiz+RwHTIlb0q/XvquvKi7YJWasqPqK5WgO2vHHmWFUJk8MqAp6+ptN1TaN5vC0RotXGA/UIAHax9R5fIew==
+  dependencies:
+    "@backstage/cli-common" "^0.1.10"
+    "@backstage/config" "^1.0.4"
+    "@backstage/config-loader" "^1.1.6"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/integration" "^1.4.0"
+    "@backstage/types" "^1.0.1"
+    "@google-cloud/storage" "^6.0.0"
+    "@keyv/memcache" "^1.3.5"
+    "@keyv/redis" "^2.5.3"
+    "@kubernetes/client-node" "0.17.0"
+    "@manypkg/get-packages" "^1.1.3"
+    "@octokit/rest" "^19.0.3"
+    "@types/cors" "^2.8.6"
+    "@types/dockerode" "^3.3.0"
+    "@types/express" "^4.17.6"
+    "@types/luxon" "^3.0.0"
+    "@types/webpack-env" "^1.15.2"
+    archiver "^5.0.2"
+    aws-sdk "^2.840.0"
+    base64-stream "^1.0.0"
+    compression "^1.7.4"
+    concat-stream "^2.0.0"
+    cors "^2.8.5"
+    dockerode "^3.3.1"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    fs-extra "10.1.0"
+    git-url-parse "^13.0.0"
+    helmet "^6.0.0"
+    isomorphic-git "^1.8.0"
+    jose "^4.6.0"
+    keyv "^4.5.2"
+    knex "^2.0.0"
+    lodash "^4.17.21"
+    logform "^2.3.2"
+    luxon "^3.0.0"
+    minimatch "^5.0.0"
+    minimist "^1.2.5"
+    morgan "^1.10.0"
+    node-abort-controller "^3.0.1"
+    node-fetch "^2.6.7"
+    node-forge "^1.3.1"
+    raw-body "^2.4.1"
+    request "^2.88.2"
+    selfsigned "^2.0.0"
+    stoppable "^1.1.0"
+    tar "^6.1.12"
+    uuid "^8.3.2"
+    winston "^3.2.1"
+    yauzl "^2.10.0"
+    yn "^4.0.0"
+
 "@backstage/backend-plugin-api@^0.1.3":
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@backstage/backend-plugin-api/-/backend-plugin-api-0.1.3.tgz#6d61337a8394d8ddd9f533882f076a90279e915a"
@@ -1328,6 +1385,20 @@
     "@backstage/backend-tasks" "^0.3.6"
     "@backstage/config" "^1.0.3"
     "@backstage/plugin-permission-common" "^0.7.0"
+    "@types/express" "^4.17.6"
+    express "^4.17.1"
+    winston "^3.2.1"
+    winston-transport "^4.5.0"
+
+"@backstage/backend-plugin-api@^0.1.4":
+  version "0.1.4"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/backend-plugin-api/-/backend-plugin-api-0.1.4.tgz#9249174bf75b0c1192e4391fd1593744f724bbe0"
+  integrity sha512-vWr51dkEbXJLm2YLlUA7cAoTZ5c/+clF6nPEQyTPw5ASkhmeN3DzHnXIju4QxpAgupBtZhKyzYdBtCQG/LeJsA==
+  dependencies:
+    "@backstage/backend-common" "^0.16.0"
+    "@backstage/backend-tasks" "^0.3.7"
+    "@backstage/config" "^1.0.4"
+    "@backstage/plugin-permission-common" "^0.7.1"
     "@types/express" "^4.17.6"
     express "^4.17.1"
     winston "^3.2.1"
@@ -1352,6 +1423,25 @@
     winston "^3.2.1"
     zod "^3.9.5"
 
+"@backstage/backend-tasks@^0.3.7":
+  version "0.3.7"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/backend-tasks/-/backend-tasks-0.3.7.tgz#e25d5e2c714830839f5450063bd2896c1714bc84"
+  integrity sha512-3M9nH2EK1g4JrWfDrt1Y11J7Yws8yjcXA3Im17vt7D2KqCcuV2M6xtnbWeHExBPE1JhKFKBB5oWDFBkvj6Yk/g==
+  dependencies:
+    "@backstage/backend-common" "^0.16.0"
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/types" "^1.0.1"
+    "@types/luxon" "^3.0.0"
+    cron "^2.0.0"
+    knex "^2.0.0"
+    lodash "^4.17.21"
+    luxon "^3.0.0"
+    node-abort-controller "^3.0.1"
+    uuid "^8.0.0"
+    winston "^3.2.1"
+    zod "^3.9.5"
+
 "@backstage/catalog-client@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@backstage/catalog-client/-/catalog-client-1.1.1.tgz#f7799c2087b9ac9ab299fd198766b40a49ab8c08"
@@ -1359,6 +1449,15 @@
   dependencies:
     "@backstage/catalog-model" "^1.1.2"
     "@backstage/errors" "^1.1.2"
+    cross-fetch "^3.1.5"
+
+"@backstage/catalog-client@^1.1.2":
+  version "1.1.2"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/catalog-client/-/catalog-client-1.1.2.tgz#79a197e05e43944e3f0a0957ac423964dc6ba810"
+  integrity sha512-df7CllJYw8bWhCbKXJmqKYJ6jpkij/QJBqKX78xSaGQjMjpu3AjOV92fu3j6Vnp19/V8bG1FAULwHjNCIqfhOg==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/errors" "^1.1.3"
     cross-fetch "^3.1.5"
 
 "@backstage/catalog-model@^1.1.2":
@@ -1369,6 +1468,19 @@
     "@backstage/config" "^1.0.3"
     "@backstage/errors" "^1.1.2"
     "@backstage/types" "^1.0.0"
+    ajv "^8.10.0"
+    json-schema "^0.4.0"
+    lodash "^4.17.21"
+    uuid "^8.0.0"
+
+"@backstage/catalog-model@^1.1.3":
+  version "1.1.3"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/catalog-model/-/catalog-model-1.1.3.tgz#e7059dc4f7fd06e029631092fd8de63ae8876361"
+  integrity sha512-fqv/HV+YtBf1hTg81P9gzaKdefTmAvh+utL8ggaZcXchYxOb5wyFhze4Gbf86wtf50ABj0Y7LxKFuGJGKNKqwQ==
+  dependencies:
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/types" "^1.0.1"
     ajv "^8.10.0"
     json-schema "^0.4.0"
     lodash "^4.17.21"
@@ -1503,12 +1615,41 @@
     yaml "^2.0.0"
     yup "^0.32.9"
 
+"@backstage/config-loader@^1.1.6":
+  version "1.1.6"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/config-loader/-/config-loader-1.1.6.tgz#ae1ff3b81031fc36aa6ec8c4cd142f9f1089017b"
+  integrity sha512-gW2ZnfjpH4V3FtXVqrZEscsN5hitiKyHDP+rlOpySQGfkwho9MBWnEpgsPJnMx9hs9LjNfv5qseElQJ+y/SgYA==
+  dependencies:
+    "@backstage/cli-common" "^0.1.10"
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/types" "^1.0.1"
+    "@types/json-schema" "^7.0.6"
+    ajv "^8.10.0"
+    chokidar "^3.5.2"
+    fs-extra "10.1.0"
+    json-schema "^0.4.0"
+    json-schema-merge-allof "^0.8.1"
+    json-schema-traverse "^1.0.0"
+    node-fetch "^2.6.7"
+    typescript-json-schema "^0.54.0"
+    yaml "^2.0.0"
+    yup "^0.32.9"
+
 "@backstage/config@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@backstage/config/-/config-1.0.3.tgz#9b27661c11b010fce974d25519c57fe28004d4a1"
   integrity sha512-KFxtGnqTFhN9zS90SLSTcDgJpsSd3IvqfeYLN8IvqfwG2lzaYCRxWRK3XlwOe2PY6Lv98YlMEWfNw5DKw46sgA==
   dependencies:
     "@backstage/types" "^1.0.0"
+    lodash "^4.17.21"
+
+"@backstage/config@^1.0.4":
+  version "1.0.4"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/config/-/config-1.0.4.tgz#70197c4e31cfb9a8242b14a8b0a8551e59361381"
+  integrity sha512-CAYPXEMLLrUDUIyLKvj0XnYaRP0uwmHKsMgr2lDljgMbNbJGLk9Nr0KgukRmVXf7URdEII6k0LKTOaaCmwQ43A==
+  dependencies:
+    "@backstage/types" "^1.0.1"
     lodash "^4.17.21"
 
 "@backstage/core-app-api@^1.1.1":
@@ -1569,6 +1710,49 @@
     zen-observable "^0.8.15"
     zod "^3.11.6"
 
+"@backstage/core-components@^0.12.0":
+  version "0.12.0"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/core-components/-/core-components-0.12.0.tgz#965f1fa5be276c1320b485dc0c2fc1305b94385e"
+  integrity sha512-GtDqqspG5VKLYoKY49F4DVaDLRqDtqegbCxjIr0TY8vvwCLmVlZkltkZkdKLfCZafeHlJz2+uChX7bV9NxbKOg==
+  dependencies:
+    "@backstage/config" "^1.0.4"
+    "@backstage/core-plugin-api" "^1.1.0"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/theme" "^0.2.16"
+    "@backstage/version-bridge" "^1.0.2"
+    "@material-table/core" "^3.1.0"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    "@react-hookz/web" "^15.0.0"
+    "@types/react-sparklines" "^1.7.0"
+    "@types/react-text-truncate" "^0.14.0"
+    ansi-regex "^6.0.1"
+    classnames "^2.2.6"
+    d3-selection "^3.0.0"
+    d3-shape "^3.0.0"
+    d3-zoom "^3.0.0"
+    dagre "^0.8.5"
+    history "^5.0.0"
+    immer "^9.0.1"
+    lodash "^4.17.21"
+    pluralize "^8.0.0"
+    prop-types "^15.7.2"
+    qs "^6.9.4"
+    rc-progress "3.4.0"
+    react-helmet "6.1.0"
+    react-hook-form "^7.12.2"
+    react-markdown "^8.0.0"
+    react-sparklines "^1.7.0"
+    react-syntax-highlighter "^15.4.5"
+    react-text-truncate "^0.19.0"
+    react-use "^17.3.2"
+    react-virtualized-auto-sizer "^1.0.6"
+    react-window "^1.8.6"
+    remark-gfm "^3.0.1"
+    zen-observable "^0.8.15"
+    zod "^3.11.6"
+
 "@backstage/core-plugin-api@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@backstage/core-plugin-api/-/core-plugin-api-1.0.7.tgz#2c02593bb8c3a2d5aa645780a8b7c2a97744d914"
@@ -1577,6 +1761,18 @@
     "@backstage/config" "^1.0.3"
     "@backstage/types" "^1.0.0"
     "@backstage/version-bridge" "^1.0.1"
+    history "^5.0.0"
+    prop-types "^15.7.2"
+    zen-observable "^0.8.15"
+
+"@backstage/core-plugin-api@^1.1.0":
+  version "1.1.0"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/core-plugin-api/-/core-plugin-api-1.1.0.tgz#eceb5382ddec407accd37d6ac43473a76eb6010b"
+  integrity sha512-m/LzmCb5wjb98zyFu5xD/e+JZzzaHU4iI2dBfk0LVCiN4KhodH6QcqpDveX+5aImivW1eJULwNQbquWRd8Avmw==
+  dependencies:
+    "@backstage/config" "^1.0.4"
+    "@backstage/types" "^1.0.1"
+    "@backstage/version-bridge" "^1.0.2"
     history "^5.0.0"
     prop-types "^15.7.2"
     zen-observable "^0.8.15"
@@ -1612,6 +1808,15 @@
     cross-fetch "^3.1.5"
     serialize-error "^8.0.1"
 
+"@backstage/errors@^1.1.3":
+  version "1.1.3"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/errors/-/errors-1.1.3.tgz#0c61b654a51b90d5224d70c16680215679ec11a0"
+  integrity sha512-KgNUELpGZ0BHqHr9Sku7iPTMc/huBurPdRMGUWC6TD6lwzHJtN1WWLJL0lzJyDprXCKQLUogIJxt8auS2bdgNw==
+  dependencies:
+    "@backstage/types" "^1.0.1"
+    cross-fetch "^3.1.5"
+    serialize-error "^8.0.1"
+
 "@backstage/integration-react@^1.1.5":
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/@backstage/integration-react/-/integration-react-1.1.5.tgz#3881a44e9d6b81a15e59753b02e943ccc37c25ab"
@@ -1634,6 +1839,20 @@
   dependencies:
     "@backstage/config" "^1.0.3"
     "@backstage/errors" "^1.1.2"
+    "@octokit/auth-app" "^4.0.0"
+    "@octokit/rest" "^19.0.3"
+    cross-fetch "^3.1.5"
+    git-url-parse "^13.0.0"
+    lodash "^4.17.21"
+    luxon "^3.0.0"
+
+"@backstage/integration@^1.4.0":
+  version "1.4.0"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/integration/-/integration-1.4.0.tgz#b97ebf432cc5ba5ea01620e81ee585632c15ab9e"
+  integrity sha512-zpQq4vKi+9efQVaidcoKTr7GRkEClTJLRzPDYYFrU1fFRWcWmqu7dKGhmCLLLJsQHCLOsRvMEPlPRU2XDcbgNA==
+  dependencies:
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
     "@octokit/auth-app" "^4.0.0"
     "@octokit/rest" "^19.0.3"
     cross-fetch "^3.1.5"
@@ -1747,6 +1966,39 @@
     node-fetch "^2.6.7"
     winston "^3.2.1"
 
+"@backstage/plugin-auth-node@^0.2.7":
+  version "0.2.7"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-auth-node/-/plugin-auth-node-0.2.7.tgz#5a716569ce44954c665d462ab73ec1aad111d948"
+  integrity sha512-lZONDhVNJZF4hqwrlWnsk1Q3XaO0eSbFdqbqtSdACjQKfopUjkYMmY71O9v0YV1qmv1k4ARzCxry3hrTk6XseQ==
+  dependencies:
+    "@backstage/backend-common" "^0.16.0"
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@types/express" "*"
+    express "^4.17.1"
+    jose "^4.6.0"
+    node-fetch "^2.6.7"
+    winston "^3.2.1"
+
+"@backstage/plugin-catalog-backend-module-bitbucket-server@^0.1.3":
+  version "0.1.3"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-catalog-backend-module-bitbucket-server/-/plugin-catalog-backend-module-bitbucket-server-0.1.3.tgz#d40d270f455850b5fa369bf33c9dc43452d8eaba"
+  integrity sha512-Lxg8XuH2ZkbghbKuhtQFQGWIao5qPtZE72aD8ehFLxix1Z5M0PWEglLY1pMTeJWu1COgTE8exhFssEGorb63Sg==
+  dependencies:
+    "@backstage/backend-common" "^0.16.0"
+    "@backstage/backend-plugin-api" "^0.1.4"
+    "@backstage/backend-tasks" "^0.3.7"
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/integration" "^1.4.0"
+    "@backstage/plugin-catalog-backend" "^1.5.1"
+    "@backstage/plugin-catalog-node" "^1.2.1"
+    "@types/node-fetch" "^2.5.12"
+    node-fetch "^2.6.7"
+    uuid "^8.0.0"
+    winston "^3.2.1"
+
 "@backstage/plugin-catalog-backend@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-backend/-/plugin-catalog-backend-1.5.0.tgz#e7db804343f2fd55f93237ef22da169fc0100f61"
@@ -1787,6 +2039,46 @@
     yn "^4.0.0"
     zod "^3.11.6"
 
+"@backstage/plugin-catalog-backend@^1.5.1":
+  version "1.5.1"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-catalog-backend/-/plugin-catalog-backend-1.5.1.tgz#f7a953d78a0d8537760644b29ed9dae0f77b62b6"
+  integrity sha512-1WCN3IlpcHa1jsCkWt/iFnAv89yAOZazWlb4AhUF7OhvTyJR9LxxM+l6AVwckTHwF269FbtyUO/AD8pLYND6oQ==
+  dependencies:
+    "@backstage/backend-common" "^0.16.0"
+    "@backstage/backend-plugin-api" "^0.1.4"
+    "@backstage/catalog-client" "^1.1.2"
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/integration" "^1.4.0"
+    "@backstage/plugin-catalog-common" "^1.0.8"
+    "@backstage/plugin-catalog-node" "^1.2.1"
+    "@backstage/plugin-permission-common" "^0.7.1"
+    "@backstage/plugin-permission-node" "^0.7.1"
+    "@backstage/plugin-scaffolder-common" "^1.2.2"
+    "@backstage/plugin-search-common" "^1.1.1"
+    "@backstage/types" "^1.0.1"
+    "@types/express" "^4.17.6"
+    codeowners-utils "^1.0.2"
+    core-js "^3.6.5"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    fast-json-stable-stringify "^2.1.0"
+    fs-extra "10.1.0"
+    git-url-parse "^13.0.0"
+    glob "^7.1.6"
+    knex "^2.0.0"
+    lodash "^4.17.21"
+    luxon "^3.0.0"
+    node-fetch "^2.6.7"
+    p-limit "^3.0.2"
+    prom-client "^14.0.1"
+    uuid "^8.0.0"
+    winston "^3.2.1"
+    yaml "^2.0.0"
+    yn "^4.0.0"
+    zod "^3.11.6"
+
 "@backstage/plugin-catalog-common@^1.0.7":
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-common/-/plugin-catalog-common-1.0.7.tgz#25231b99f53a6218925d1ed9848c9872fddc52e4"
@@ -1795,6 +2087,15 @@
     "@backstage/catalog-model" "^1.1.2"
     "@backstage/plugin-permission-common" "^0.7.0"
     "@backstage/plugin-search-common" "^1.1.0"
+
+"@backstage/plugin-catalog-common@^1.0.8":
+  version "1.0.8"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-catalog-common/-/plugin-catalog-common-1.0.8.tgz#13da7a87c913e042248cbb731011f11746250c36"
+  integrity sha512-I17Z2fmuv28nIPycaIqf/DlV7dkIBjBfQ9PdcnK1UbnN8UdMzdx1Q79DDEUEhXe9Q6mnMCDINLlfmGs9VBzGUg==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/plugin-permission-common" "^0.7.1"
+    "@backstage/plugin-search-common" "^1.1.1"
 
 "@backstage/plugin-catalog-graph@^0.2.22":
   version "0.2.22"
@@ -1854,6 +2155,18 @@
     "@backstage/plugin-catalog-common" "^1.0.7"
     "@backstage/types" "^1.0.0"
 
+"@backstage/plugin-catalog-node@^1.2.1":
+  version "1.2.1"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-catalog-node/-/plugin-catalog-node-1.2.1.tgz#5bc35d64aff9229a41d6e4d26aa511b5eba88af8"
+  integrity sha512-JfDWSlAxlpjo8y9WamzYfAjlbOMZGJWxPGOyw2DUxiKOivX2ylz4j7Roy5bBKJXgq0YKoKtUNz4vpvCmllE4xA==
+  dependencies:
+    "@backstage/backend-plugin-api" "^0.1.4"
+    "@backstage/catalog-client" "^1.1.2"
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/plugin-catalog-common" "^1.0.8"
+    "@backstage/types" "^1.0.1"
+
 "@backstage/plugin-catalog-react@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-catalog-react/-/plugin-catalog-react-1.2.0.tgz#7ead87451adba7a0786c4789b95f91ddacf7b75c"
@@ -1871,6 +2184,34 @@
     "@backstage/theme" "^0.2.16"
     "@backstage/types" "^1.0.0"
     "@backstage/version-bridge" "^1.0.1"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    classnames "^2.2.6"
+    jwt-decode "^3.1.0"
+    lodash "^4.17.21"
+    qs "^6.9.4"
+    react-use "^17.2.4"
+    yaml "^2.0.0"
+    zen-observable "^0.8.15"
+
+"@backstage/plugin-catalog-react@^1.2.1":
+  version "1.2.1"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-catalog-react/-/plugin-catalog-react-1.2.1.tgz#98396ebfb0e368e9af4d7f85838def7804f5db3c"
+  integrity sha512-jMAmcGAM0RtAZGW18ilyPvZMoxhkBvnkIxZBIT+zoacTetOdMKlvRlWah0qlEYIdz2drISCpD2c+frC4Cgwtsw==
+  dependencies:
+    "@backstage/catalog-client" "^1.1.2"
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/core-components" "^0.12.0"
+    "@backstage/core-plugin-api" "^1.1.0"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/integration" "^1.4.0"
+    "@backstage/plugin-catalog-common" "^1.0.8"
+    "@backstage/plugin-permission-common" "^0.7.1"
+    "@backstage/plugin-permission-react" "^0.4.7"
+    "@backstage/theme" "^0.2.16"
+    "@backstage/types" "^1.0.1"
+    "@backstage/version-bridge" "^1.0.2"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
     "@material-ui/lab" "4.0.0-alpha.57"
@@ -1926,6 +2267,69 @@
     luxon "^3.0.0"
     react-use "^17.2.4"
 
+"@backstage/plugin-kubernetes-backend@^0.8.0":
+  version "0.8.0"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-kubernetes-backend/-/plugin-kubernetes-backend-0.8.0.tgz#42ddf790dcf0ad3f64f7b94469f29547c6943858"
+  integrity sha512-xcOEIeiQvoAjj2Skad2u4CNVHX3ePYUI3lwP+RPX9rJ05gLwNYvTdvVDrW4JOfzycyMJjGkOBMQFJx3OJ2jLUw==
+  dependencies:
+    "@azure/identity" "^2.0.4"
+    "@backstage/backend-common" "^0.16.0"
+    "@backstage/catalog-client" "^1.1.2"
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/plugin-auth-node" "^0.2.7"
+    "@backstage/plugin-kubernetes-common" "^0.4.4"
+    "@google-cloud/container" "^4.0.0"
+    "@kubernetes/client-node" "0.17.0"
+    "@types/express" "^4.17.6"
+    "@types/luxon" "^3.0.0"
+    aws-sdk "^2.840.0"
+    aws4 "^1.11.0"
+    compression "^1.7.4"
+    cors "^2.8.5"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    fs-extra "10.1.0"
+    helmet "^6.0.0"
+    lodash "^4.17.21"
+    luxon "^3.0.0"
+    morgan "^1.10.0"
+    stream-buffers "^3.0.2"
+    winston "^3.2.1"
+    yn "^4.0.0"
+
+"@backstage/plugin-kubernetes-common@^0.4.4":
+  version "0.4.4"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-kubernetes-common/-/plugin-kubernetes-common-0.4.4.tgz#5c77e326a9d7cd8eefb75ae060c8dd122a2b25e4"
+  integrity sha512-T8alpH7jcT+4PRzgQEg1kDvkqF7jWa5u68GJzdGrpVCb/AyQqv6Z3zKAcG6l89mfVlXoFdU3sTOPsNrs+ar/Rw==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.3"
+    "@kubernetes/client-node" "0.17.0"
+
+"@backstage/plugin-kubernetes@^0.7.4":
+  version "0.7.4"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-kubernetes/-/plugin-kubernetes-0.7.4.tgz#813aba715288cce6d20dc9eba4e46d9193a6708c"
+  integrity sha512-ASSG/cUoAUDN/ycXT8HFTz7R20brIRBqagA6zoRlFoepV0jjqacgwVGo5IA0X+q6v+kWvOssfYoLU3BIFTTDtQ==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/config" "^1.0.4"
+    "@backstage/core-components" "^0.12.0"
+    "@backstage/core-plugin-api" "^1.1.0"
+    "@backstage/plugin-catalog-react" "^1.2.1"
+    "@backstage/plugin-kubernetes-common" "^0.4.4"
+    "@backstage/theme" "^0.2.16"
+    "@kubernetes/client-node" "0.17.0"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@material-ui/lab" "4.0.0-alpha.57"
+    "@types/react" "^16.13.1 || ^17.0.0"
+    cronstrue "^2.2.0"
+    js-yaml "^4.0.0"
+    lodash "^4.17.21"
+    luxon "^3.0.0"
+    react-use "^17.2.4"
+
 "@backstage/plugin-org@^0.5.10":
   version "0.5.10"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-org/-/plugin-org-0.5.10.tgz#c3809e99ef65c1c885dc47132674f94a66ce85af"
@@ -1956,6 +2360,18 @@
     uuid "^8.0.0"
     zod "^3.11.6"
 
+"@backstage/plugin-permission-common@^0.7.1":
+  version "0.7.1"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-permission-common/-/plugin-permission-common-0.7.1.tgz#2ed401eda833fb8792eee67271fdbb1c987d2c15"
+  integrity sha512-FiO809BnHkL9H8wRU0lwTkoJiEAybKcpMbPtNEOpHZcqGBpZFE8ILYxcff818Dgpw7mDZU25jLuNJ/Vp2uFwig==
+  dependencies:
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/types" "^1.0.1"
+    cross-fetch "^3.1.5"
+    uuid "^8.0.0"
+    zod "^3.11.6"
+
 "@backstage/plugin-permission-node@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-permission-node/-/plugin-permission-node-0.7.0.tgz#ff77a9eea439e1b3c564bfbec65ff4de593cd992"
@@ -1972,6 +2388,22 @@
     zod "^3.11.6"
     zod-to-json-schema "^3.18.1"
 
+"@backstage/plugin-permission-node@^0.7.1":
+  version "0.7.1"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-permission-node/-/plugin-permission-node-0.7.1.tgz#5a38e5112e1826ee1f7d3ba6ed8f3ae1fd1a9c76"
+  integrity sha512-XVrolvSsOWUrapYjNbmnWBxT8YmW/HWLqbs9aVOtikQgVrX9+2ajX4wtr7IRJi2x3gCJf5BKxs1LU/L2/Fbz9A==
+  dependencies:
+    "@backstage/backend-common" "^0.16.0"
+    "@backstage/config" "^1.0.4"
+    "@backstage/errors" "^1.1.3"
+    "@backstage/plugin-auth-node" "^0.2.7"
+    "@backstage/plugin-permission-common" "^0.7.1"
+    "@types/express" "^4.17.6"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    zod "^3.11.6"
+    zod-to-json-schema "^3.18.1"
+
 "@backstage/plugin-permission-react@^0.4.6":
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/@backstage/plugin-permission-react/-/plugin-permission-react-0.4.6.tgz#ff9b8059d740a614e1475d7ee1b1c131ffa00925"
@@ -1980,6 +2412,18 @@
     "@backstage/config" "^1.0.3"
     "@backstage/core-plugin-api" "^1.0.7"
     "@backstage/plugin-permission-common" "^0.7.0"
+    cross-fetch "^3.1.5"
+    react-use "^17.2.4"
+    swr "^1.1.2"
+
+"@backstage/plugin-permission-react@^0.4.7":
+  version "0.4.7"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-permission-react/-/plugin-permission-react-0.4.7.tgz#59a3907a21343b59023050be6b8159aade2ba0c2"
+  integrity sha512-faPJWTrpx+rbmx//9K2AOm/0d5mLcKwpzp2DUayalu7whGsiXMiOW5uIqFkd2uQk45ZOeMtDE+LBvYLSN3t9FQ==
+  dependencies:
+    "@backstage/config" "^1.0.4"
+    "@backstage/core-plugin-api" "^1.1.0"
+    "@backstage/plugin-permission-common" "^0.7.1"
     cross-fetch "^3.1.5"
     react-use "^17.2.4"
     swr "^1.1.2"
@@ -2059,6 +2503,14 @@
   dependencies:
     "@backstage/catalog-model" "^1.1.2"
     "@backstage/types" "^1.0.0"
+
+"@backstage/plugin-scaffolder-common@^1.2.2":
+  version "1.2.2"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-scaffolder-common/-/plugin-scaffolder-common-1.2.2.tgz#26900bda0791d725e17bb8aebeb35bf8fa57663e"
+  integrity sha512-s6l7S8EqFjpUO9Jg9uX3/5Gs8shjx4WtwwHHRLoIEJFgM/cVQVgL2QoFQEze9sqpfG9UJeuAmtNzYusIC0vAtA==
+  dependencies:
+    "@backstage/catalog-model" "^1.1.3"
+    "@backstage/types" "^1.0.1"
 
 "@backstage/plugin-scaffolder@^1.7.0":
   version "1.7.0"
@@ -2171,6 +2623,14 @@
   dependencies:
     "@backstage/plugin-permission-common" "^0.7.0"
     "@backstage/types" "^1.0.0"
+
+"@backstage/plugin-search-common@^1.1.1":
+  version "1.1.1"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/plugin-search-common/-/plugin-search-common-1.1.1.tgz#7c2692dcfe725cc2e70f8244995793d8ba4018cb"
+  integrity sha512-EVbset1Pa3NtvEip9pZXKtU2S0A2R7iAVoKX09nFxDGS7qXVyaJLF+CvmMKPN2uJkHSP5H+buDRnoOq3ZxGb9Q==
+  dependencies:
+    "@backstage/plugin-permission-common" "^0.7.1"
+    "@backstage/types" "^1.0.1"
 
 "@backstage/plugin-search-react@^1.2.0":
   version "1.2.0"
@@ -2404,10 +2864,20 @@
   resolved "https://registry.yarnpkg.com/@backstage/types/-/types-1.0.0.tgz#3c4cc1487d30d113250fc530238aae0a2ba0e58c"
   integrity sha512-x5650F/lXUO1Bo++Eg1T9vreuIzlOeljxTUCP6mxqOGgOWr8yBku42HiHX6KE80OpckFDTUyKtEWqboclfKUkg==
 
+"@backstage/types@^1.0.1":
+  version "1.0.1"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/types/-/types-1.0.1.tgz#9a64515ca5683d7f4f1c9a36c7ef84cab1af7c09"
+  integrity sha512-iSaeCzTczIWQ/Kq1gk9HP3U62jEnCj6O/AfcJv0ahyeGdTjlL9og6lgeL/FClOauBWwFFcqF+a8eehdCfFmfng==
+
 "@backstage/version-bridge@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@backstage/version-bridge/-/version-bridge-1.0.1.tgz#719082a88d33e0a35a2bafec648cc63069da20f7"
   integrity sha512-UZvcmONji6iFHfxUU+hM/Wd1N65K+adFrjifZ7JyfdZnQgo3C2D8YE+j34i/yd0MCjGs/TjaixtF9Jb3viDXow==
+
+"@backstage/version-bridge@^1.0.2":
+  version "1.0.2"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@backstage/version-bridge/-/version-bridge-1.0.2.tgz#18cda0fb347ee3f47b1a99a6ceb39856a799f9ba"
+  integrity sha512-R4SCYi4JAgFmW8zu4G7lXp+SlkPD9bFHx4Sw7ThovxdWtFaE82sAGkVzvaSEEksfrPn3mj+FKt6Hh9D9N/aKHA==
 
 "@balena/dockerignore@^1.0.2":
   version "1.0.2"
@@ -2663,6 +3133,13 @@
     form-data "^4.0.0"
     qs "^6.10.1"
     xcase "^2.0.1"
+
+"@google-cloud/container@^4.0.0":
+  version "4.4.0"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@google-cloud/container/-/container-4.4.0.tgz#ab02fcbce7d31805a9bc7596b21b388e9900bc4b"
+  integrity sha512-5pBmV4Wvop0cHldqxjITwPljb9BEDiMzF5czZncbb6xCv9d06/aKjBaR1bqwysQl0Hrw7b1VxcB7n8BjxswCmw==
+  dependencies:
+    google-gax "^3.5.2"
 
 "@google-cloud/firestore@^6.0.0":
   version "6.4.1"
@@ -3089,12 +3566,48 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.4.0.tgz#08d6c5e20cf7e4cc02fd181c4b0c225cd31dbb60"
   integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
 
-"@keyv/redis@^2.2.3":
+"@keyv/memcache@^1.3.5":
+  version "1.3.5"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@keyv/memcache/-/memcache-1.3.5.tgz#bf7b5616b60fd997cfe5e6e5d5eb3b9fbecf39a1"
+  integrity sha512-Y0l73u+migBSwLQzxfa/XlsnVd5t9vzWmxK75z0LoGbIGfFm2NN3hqTLHSU0VhUGVkjGsFNXSYkQAF0zqbOugQ==
+  dependencies:
+    json-buffer "^3.0.1"
+    memjs "^1.3.0"
+
+"@keyv/redis@^2.2.3", "@keyv/redis@^2.5.3":
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/@keyv/redis/-/redis-2.5.3.tgz#d1ba21bd55afa13cb74167ecf9f6d960302192cb"
   integrity sha512-IY5CaiAjGypK4Bky1xepYoKg2af5oIyX03qO6ww8QmZlYhcS8iaKs/SfIHV/bCHh5fA3MVuV/m/VebMXgrBo5w==
   dependencies:
     ioredis "^5.2.4"
+
+"@kubernetes/client-node@0.17.0":
+  version "0.17.0"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@kubernetes/client-node/-/client-node-0.17.0.tgz#cbf69ff6c8a311c1461275169612ac46db00fe3f"
+  integrity sha512-oKQfRf7RPpJIF2Ft92g6jefbW3Mddf6IzcfpBNDWrAy66LmyAWds6fQTMsdutGPuXV6KD29u6RfM3rdzddGMIA==
+  dependencies:
+    "@types/js-yaml" "^4.0.1"
+    "@types/node" "^10.12.0"
+    "@types/request" "^2.47.1"
+    "@types/stream-buffers" "^3.0.3"
+    "@types/tar" "^4.0.3"
+    "@types/underscore" "^1.8.9"
+    "@types/ws" "^6.0.1"
+    byline "^5.0.0"
+    execa "5.0.0"
+    isomorphic-ws "^4.0.1"
+    js-yaml "^4.1.0"
+    jsonpath-plus "^0.19.0"
+    openid-client "^5.1.6"
+    request "^2.88.0"
+    rfc4648 "^1.3.0"
+    shelljs "^0.8.5"
+    stream-buffers "^3.0.2"
+    tar "^6.1.11"
+    tmp-promise "^3.0.2"
+    tslib "^1.9.3"
+    underscore "^1.9.1"
+    ws "^7.3.1"
 
 "@kubernetes/client-node@^0.17.0":
   version "0.17.1"
@@ -5102,6 +5615,11 @@
     "@types/node" "*"
     "@types/responselike" "^1.0.0"
 
+"@types/caseless@*":
+  version "0.12.2"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/caseless/-/caseless-0.12.2.tgz#f65d3d6389e01eeb458bd54dc8f52b95a9463bc8"
+  integrity sha512-6ckxMjBBD8URvjB6J3NcnuAn5Pkl7t3TizAg+xdlzzQGSPSmBcXf8KoIH0ua/i+tio+ZRUHEXp0HEmvaR4kt0w==
+
 "@types/connect-history-api-fallback@^1.3.5":
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/@types/connect-history-api-fallback/-/connect-history-api-fallback-1.3.5.tgz#d1f7a8a09d0ed5a57aee5ae9c18ab9b803205dae"
@@ -5288,6 +5806,11 @@
   resolved "https://registry.yarnpkg.com/@types/js-levenshtein/-/js-levenshtein-1.1.1.tgz#ba05426a43f9e4e30b631941e0aa17bf0c890ed5"
   integrity sha512-qC4bCqYGy1y/NP7dDVr7KJarn+PbX1nSpwA7JXdu0HxT3QYjO8MJ+cntENtHFVy2dRAyBV23OZ6MxsW1AM1L8g==
 
+"@types/js-yaml@^4.0.1":
+  version "4.0.5"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/js-yaml/-/js-yaml-4.0.5.tgz#738dd390a6ecc5442f35e7f03fa1431353f7e138"
+  integrity sha512-FhpRzf927MNQdRZP0J5DLIdTXhjLYzeUTmLAu69mnVksLH9CJY3IuSeEgbKUki7GQZm0WqDkGzyxju2EZGD2wA==
+
 "@types/jsdom@^20.0.0":
   version "20.0.1"
   resolved "https://registry.yarnpkg.com/@types/jsdom/-/jsdom-20.0.1.tgz#07c14bc19bd2f918c1929541cdaacae894744808"
@@ -5391,12 +5914,19 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.2.tgz#ee771e2ba4b3dc5b372935d549fd9617bf345b8c"
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
+"@types/minipass@*":
+  version "3.3.5"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/minipass/-/minipass-3.3.5.tgz#ba65aaae3fe7318520bd4a40bc71c53fc8826e45"
+  integrity sha512-M2BLHQdEmDmH671h0GIlOQQJrgezd1vNqq7PVj1VOsHZ2uQQb4iPiQIl0SlMdhxZPUsLIfEklmeEHXg8DJRewA==
+  dependencies:
+    minipass "*"
+
 "@types/ms@*":
   version "0.7.31"
   resolved "https://registry.yarnpkg.com/@types/ms/-/ms-0.7.31.tgz#31b7ca6407128a3d2bbc27fe2d21b345397f6197"
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
-"@types/node-fetch@^2.5.0":
+"@types/node-fetch@^2.5.0", "@types/node-fetch@^2.5.12":
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.6.2.tgz#d1a9c5fd049d9415dce61571557104dec3ec81da"
   integrity sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==
@@ -5408,6 +5938,11 @@
   version "18.11.9"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.9.tgz#02d013de7058cea16d36168ef2fc653464cfbad4"
   integrity sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==
+
+"@types/node@^10.12.0":
+  version "10.17.60"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
+  integrity sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==
 
 "@types/node@^12.7.1":
   version "12.20.55"
@@ -5477,7 +6012,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@<18.0.0", "@types/react-dom@^17":
+"@types/react-dom@*", "@types/react-dom@<18.0.0":
   version "17.0.18"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.18.tgz#8f7af38f5d9b42f79162eea7492e5a1caff70dc2"
   integrity sha512-rLVtIfbwyur2iFKykP2w0pl/1unw26b5td16d5xMgp7/yjTHomkyxPYChFoCr/FtEX1lN9wY6lFj1qvKdS5kDw==
@@ -5523,6 +6058,16 @@
     "@types/prop-types" "*"
     "@types/scheduler" "*"
     csstype "^3.0.2"
+
+"@types/request@^2.47.1":
+  version "2.48.8"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/request/-/request-2.48.8.tgz#0b90fde3b655ab50976cb8c5ac00faca22f5a82c"
+  integrity sha512-whjk1EDJPcAR2kYHRbFl/lKeeKYTi05A15K9bnLInCVroNDCtXce57xKdI0/rQaA3K+6q0eFyUBPmqfSndUZdQ==
+  dependencies:
+    "@types/caseless" "*"
+    "@types/node" "*"
+    "@types/tough-cookie" "*"
+    form-data "^2.5.0"
 
 "@types/resolve@1.17.1":
   version "1.17.1"
@@ -5604,6 +6149,13 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
 
+"@types/stream-buffers@^3.0.3":
+  version "3.0.4"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/stream-buffers/-/stream-buffers-3.0.4.tgz#bf128182da7bc62722ca0ddf5458a9c65f76e648"
+  integrity sha512-qU/K1tb2yUdhXkLIATzsIPwbtX6BpZk0l3dPW6xqWyhfzzM1ECaQ/8faEnu3CNraLiQ9LHyQQPBGp7N9Fbs25w==
+  dependencies:
+    "@types/node" "*"
+
 "@types/styled-jsx@^2.2.8":
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/@types/styled-jsx/-/styled-jsx-2.2.9.tgz#e50b3f868c055bcbf9bc353eca6c10fdad32a53f"
@@ -5625,6 +6177,14 @@
   integrity sha512-X3HPWTwXRerBZS7Mo1k6vMVR1Z6zmJcDVn5O/31whe0tnjE4te6ZJSJGq1RiqHPjzPdMTfjCFogDJmwng9xHaQ==
   dependencies:
     "@types/superagent" "*"
+
+"@types/tar@^4.0.3":
+  version "4.0.5"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/tar/-/tar-4.0.5.tgz#5f953f183e36a15c6ce3f336568f6051b7b183f3"
+  integrity sha512-cgwPhNEabHaZcYIy5xeMtux2EmYBitfqEceBUi2t5+ETy4dW6kswt6WX4+HqLeiiKOo42EXbGiDmVJ2x+vi37Q==
+  dependencies:
+    "@types/minipass" "*"
+    "@types/node" "*"
 
 "@types/testing-library__jest-dom@^5.9.1":
   version "5.14.5"
@@ -5650,6 +6210,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/underscore@^1.8.9":
+  version "1.11.4"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/underscore/-/underscore-1.11.4.tgz#62e393f8bc4bd8a06154d110c7d042a93751def3"
+  integrity sha512-uO4CD2ELOjw8tasUrAhvnn2W4A0ZECOvMjCivJr4gA9pGgjv+qxKWY9GLTMVEK8ej85BxQOocUyE7hImmSQYcg==
+
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
@@ -5659,6 +6224,13 @@
   version "1.18.0"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.18.0.tgz#ed6ecaa8e5ed5dfe8b2b3d00181702c9925f13fb"
   integrity sha512-56/MAlX5WMsPVbOg7tAxnYvNYMMWr/QJiIp6BxVSW3JJXUVzzOn64qW8TzQyMSqSUFM2+PVI4aUHcHOzIz/1tg==
+
+"@types/ws@^6.0.1":
+  version "6.0.4"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/@types/ws/-/ws-6.0.4.tgz#7797707c8acce8f76d8c34b370d4645b70421ff1"
+  integrity sha512-PpPrX7SZW9re6+Ha8ojZG4Se8AZXgf0GK6zmfqEuCsY49LFDNXO3SByp44X3dFEqtB73lkCDAdUazhAjVPiNwg==
+  dependencies:
+    "@types/node" "*"
 
 "@types/ws@^8.5.1":
   version "8.5.3"
@@ -6215,6 +6787,7 @@ anymatch@^3.0.3, anymatch@~3.1.2:
     "@backstage/plugin-catalog-import" "^0.9.0"
     "@backstage/plugin-catalog-react" "^1.2.0"
     "@backstage/plugin-github-actions" "^0.5.10"
+    "@backstage/plugin-kubernetes" "^0.7.4"
     "@backstage/plugin-org" "^0.5.10"
     "@backstage/plugin-permission-react" "^0.4.6"
     "@backstage/plugin-scaffolder" "^1.7.0"
@@ -6537,7 +7110,7 @@ aws-sign2@~0.7.0:
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
   integrity sha512-08kcGqnYf/YmjoRhfxyu+CLxBjUtHLXLXX/vUfx9l2LYzG3c1m61nrpyFUZI6zeS+Li/wWMMidD9KgrqtGq3mA==
 
-aws4@^1.8.0:
+aws4@^1.11.0, aws4@^1.8.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
@@ -8056,6 +8629,11 @@ cron@^2.0.0:
   integrity sha512-Hq7u3P8y7UWYvsZbSKHHJDVG0VO9O7tp2qljxzTScelcTODBfCme8AIhnZsFwmQ9NchZ3hr2uNr+s3DSms7q6w==
   dependencies:
     luxon "^1.23.x"
+
+cronstrue@^2.2.0:
+  version "2.15.0"
+  resolved "https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-npmjs-remote/cronstrue/-/cronstrue-2.15.0.tgz#e6005707c098dcf696be20543c9f1081df0c3584"
+  integrity sha512-m6UxN/c3gqTnbEl0vRBiN0hocf8U6E1GYyPkH45wLC39UGiuDORBEt7GsQtOJPasP0P6TwoL8X2wHMyHOx6J4Q==
 
 cross-env@^7.0.0:
   version "7.0.3"
@@ -10266,7 +10844,7 @@ form-data-encoder@^1.4.3:
   resolved "https://registry.yarnpkg.com/form-data-encoder/-/form-data-encoder-1.7.2.tgz#1f1ae3dccf58ed4690b86d87e4f57c654fbab040"
   integrity sha512-qfqtYan3rxrnCk1VYaA4H+Ms9xdpPqvLZa6xmMgFvhO32x7/3J/ExcTd6qpxM0vH2GdMI+poehyBZvqfMTto8A==
 
-form-data@^2.3.2:
+form-data@^2.3.2, form-data@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.5.1.tgz#f2cbec57b5e59e23716e128fe44d4e5dd23895f4"
   integrity sha512-m21N3WOmEEURgk6B9GLOE4RuWOFf28Lhh9qGYeNlGq4VDXUlJy2th2slBNU8Gp8EzloYZOibZJ7t5ecIrFSjVA==
@@ -10796,7 +11374,7 @@ google-auth-library@^8.0.0, google-auth-library@^8.0.1, google-auth-library@^8.0
     jws "^4.0.0"
     lru-cache "^6.0.0"
 
-google-gax@^3.5.1:
+google-gax@^3.5.1, google-gax@^3.5.2:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/google-gax/-/google-gax-3.5.2.tgz#7c3ad61dbf366a55527b803caead276668b160d8"
   integrity sha512-AyP53w0gHcWlzxm+jSgqCR3Xu4Ld7EpSjhtNBnNhzwwWaIUyphH9kBGNIEH+i4UGkTUXOY29K/Re8EiAvkBRGw==
@@ -12994,7 +13572,7 @@ keyv-memcache@^1.2.5:
     json-buffer "^3.0.1"
     memjs "^1.3.0"
 
-keyv@^4.0.0, keyv@^4.0.3:
+keyv@^4.0.0, keyv@^4.0.3, keyv@^4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-4.5.2.tgz#0e310ce73bf7851ec702f2eaf46ec4e3805cce56"
   integrity sha512-5MHbFaKn8cNSmVW7BYnijeAVlE4cYA/SVkifVgrh7yotnfhKmjuXpDKjrABLnT0SfHWV21P8ow07OGfRrNDg8g==
@@ -14316,6 +14894,13 @@ minipass-sized@^1.0.3:
   dependencies:
     minipass "^3.0.0"
 
+minipass@*, minipass@^3.0.0, minipass@^3.1.0, minipass@^3.1.1, minipass@^3.1.3, minipass@^3.1.6:
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-3.3.4.tgz#ca99f95dd77c43c7a76bf51e6d200025eee0ffae"
+  integrity sha512-I9WPbWHCGu8W+6k1ZiGpPu0GkoKBeorkfKNuAFBNS1HNFJvke82sxvI5bzcCNpWPorkOO5QQ+zomzzwRxejXiw==
+  dependencies:
+    yallist "^4.0.0"
+
 minipass@^2.6.0, minipass@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.9.0.tgz#e713762e7d3e32fed803115cf93e04bca9fcc9a6"
@@ -14323,13 +14908,6 @@ minipass@^2.6.0, minipass@^2.9.0:
   dependencies:
     safe-buffer "^5.1.2"
     yallist "^3.0.0"
-
-minipass@^3.0.0, minipass@^3.1.0, minipass@^3.1.1, minipass@^3.1.3, minipass@^3.1.6:
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/minipass/-/minipass-3.3.4.tgz#ca99f95dd77c43c7a76bf51e6d200025eee0ffae"
-  integrity sha512-I9WPbWHCGu8W+6k1ZiGpPu0GkoKBeorkfKNuAFBNS1HNFJvke82sxvI5bzcCNpWPorkOO5QQ+zomzzwRxejXiw==
-  dependencies:
-    yallist "^4.0.0"
 
 minizlib@^1.3.3:
   version "1.3.3"
@@ -18654,7 +19232,7 @@ tar@^4.4.12:
     safe-buffer "^5.2.1"
     yallist "^3.1.1"
 
-tar@^6.0.2, tar@^6.1.0, tar@^6.1.11, tar@^6.1.2:
+tar@^6.0.2, tar@^6.1.0, tar@^6.1.11, tar@^6.1.12, tar@^6.1.2:
   version "6.1.12"
   resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.12.tgz#3b742fb05669b55671fb769ab67a7791ea1a62e6"
   integrity sha512-jU4TdemS31uABHd+Lt5WEYJuzn+TJTCBLljvIAHZOz6M9Os5pJ4dD+vRFLxPa/n3T0iEFzpi+0x1UfuDZYbRMw==

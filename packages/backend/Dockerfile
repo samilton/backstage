@@ -19,11 +19,13 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get install -y --no-install-recommends \
         libsqlite3-dev \
         python3 \
+        python3-pip \
         ca-certificates \
         curl \
         dos2unix \
         build-essential && \
-    yarn config set python /usr/bin/python3
+    yarn config set python /usr/bin/python3 && \
+    mkdir /templates
 
 # get Elliott certificates
 RUN for cert_name in EMC-PA-Root-CA.crt EMC-NY-CA01.crt EMC-PA-CA01.crt; do \
@@ -40,6 +42,8 @@ USER node
 RUN npm config set cafile /etc/ssl/certs/ca-certificates.crt && \
     npm config set registry https://artifactory.elliottmgmt.com/artifactory/api/npm/npm-virtual/
 ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
+
+RUN pip config set global.cert /etc/ssl/certs/ca-certificates.crt
 
 # This should create the app dir as `node`.
 # If it is instead created as `root` then the `tar` command below will fail: `can't create directory 'packages/': Permission denied`.
@@ -62,4 +66,10 @@ RUN --mount=type=cache,target=/home/node/.cache/yarn,sharing=locked,uid=1000,gid
 COPY --chown=node:node packages/backend/dist/bundle.tar.gz app-config*.yaml ./
 RUN tar xzf bundle.tar.gz && rm bundle.tar.gz
 
+COPY --chown=node:node rust /templates/rust
+COPY --chown=node:node golang /templates/golang
+
 CMD ["node", "packages/backend", "--config", "app-config.yaml", "--config", "app-config.production.yaml"]
+
+RUN pip install --upgrade pip && pip install mkdocs-techdocs-core==1.1.7
+

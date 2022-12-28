@@ -1,5 +1,5 @@
 apiVersion: v2
 appVersion: "1.0"
-description: A helm chart to deploy a sample Dash app
-name: k8s-dash-app
+description: A helm chart to deploy backstage
+name: backstage
 version: 0.1.0

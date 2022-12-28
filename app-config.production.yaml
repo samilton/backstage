@@ -24,17 +24,67 @@ backend:
     connection:
       host: 10.43.63.35 # ${POSTGRES_SERVICE_HOST}
       port: ${POSTGRES_SERVICE_PORT}
-      user: backstage
-      password: hunter2
+      user: ${POSTGRES_USERNAME}
+      password: ${POSTGRES_PASSWORD}
       # https://node-postgres.com/features/ssl
       # you can set the sslmode configuration option via the `PGSSLMODE` environment variable
       # see https://www.postgresql.org/docs/current/libpq-ssl.html Table 33.1. SSL Mode Descriptions (e.g. require)
       # ssl:
       #   ca: # if you have a CA file and want to verify it you can uncomment this section
       #     $file: <file-path>/ca/server.crt
+      #
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: https://rancher-dev-cs.elliottmgmt.com/k8s/clusters/c-hb4xn
+          name: dev-cs-1
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          serviceAccountToken: "kubeconfig-u-wpfcvgvqpw:79qv2zx5fs5vx5k7n5w8dwwj882jbfn99jr9n2zf5gxt8fdbzmsk6f"
+          caData: ${K8S_CA_DATA}
+
+integrations:
+  bitbucketServer:
+    - host: stash.elliottmgmt.com
+      apiBaseUrl: https://stash.elliottmgmt.com/rest/api/1.0
+      token: ${BITBUCKET_API_TOKEN}
+
+techdocs:
+  builder: 'local'
+  publisher:
+    type: 'local'
+  generator:
+    runIn: 'local'
 
 catalog:
-  # Overrides the default list locations from app-config.yaml as these contain example data.
-  # See https://backstage.io/docs/features/software-catalog/software-catalog-overview#adding-components-to-the-catalog for more details
-  # on how to get entities into the catalog.
-  locations: []
+  providers:
+    bitbucketServer:
+      stash:
+        host: 'stash.elliottmgmt.com'
+        catalogPath: /catalog-info.yaml
+      schedule:
+        frequency: { minutes: 30 }
+        timeout: { minutes: 3}
+        host: 'stash.elliottmgmt.com'
+  import:
+    entityFilename: catalog-info.yaml
+    pullRequestBranchName: backstage-integration
+  rules:
+    - allow: [Component, System, API, Resource, Location]
+  locations:
+    - type: file
+      target: /templates/rust/template.yaml
+      rules:
+        - allow: [Template]
+    - type: file
+      target: /templates/golang/template.yaml
+      rules:
+        - allow: [Template]
+    - type: file
+      target: ../../examples/org.yaml
+      rules:
+        - allow: [User, Group]

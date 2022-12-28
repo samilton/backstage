@@ -41,16 +41,24 @@ backend:
       - host: "artifactory.elliottmgmt.com"
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
+kubernetes:
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - url: https://rancher-dev-cs.elliottmgmt.com/k8s/clusters/c-hb4xn
+          name: dev-cs-1
+          authProvider: 'serviceAccount'
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          serviceAccountToken: "kubeconfig-u-wpfcvgvqpw:79qv2zx5fs5vx5k7n5w8dwwj882jbfn99jr9n2zf5gxt8fdbzmsk6f"
+
 integrations:
-  github:
-    - host: github.com
-      # This is a Personal Access Token or PAT from GitHub. You can find out how to generate this token, and more information
-      # about setting up the GitHub integration here: https://backstage.io/docs/getting-started/configuration#setting-up-a-github-integration
-      token: ${GITHUB_TOKEN}
-    ### Example for how to add your GitHub Enterprise instance using the API:
-    # - host: ghe.example.net
-    #   apiBaseUrl: https://ghe.example.net/api/v3
-    #   token: ${GHE_TOKEN}
+  bitbucketServer:
+    - host: stash.elliottmgmt.com
+      apiBaseUrl: https://stash.elliottmgmt.com/rest/api/1.0
+      token: MzU1NzA2MTQ3MTU5Otsdc9R9051tLmhvGOq9jwN2G+HP
 
 proxy:
   '/test':
@@ -76,39 +84,26 @@ scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
 catalog:
+  providers:
+    bitbucketServer:
+      stash:
+        host: 'stash.elliottmgmt.com'
+        catalogPath: /catalog-info.yaml
+      schedule:
+        frequency: { minutes: 5 }
+        timeout: { minutes: 3}
+        host: 'stash.elliottmgmt.com'
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
     - allow: [Component, System, API, Resource, Location]
   locations:
-    # Local example data, file locations are relative to the backend process, typically `packages/backend`
-    #- type: file
-    #  target: ../../examples/entities.yaml
-
-    # Local example template
     - type: file
-      target: ../../examples/template/template.yaml
+      target: /templates/rust/template.yaml
       rules:
         - allow: [Template]
-
-    - type: file
-      target: ../../rust/template/template.yaml
-      rules:
-        - allow: [Template]
-
-    # Local example organizational data
     - type: file
       target: ../../examples/org.yaml
       rules:
         - allow: [User, Group]
-
-    ## Uncomment these lines to add more example data
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/all.yaml
-
-    ## Uncomment these lines to add an example org
-    # - type: url
-    #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
-    #   rules:
-    #     - allow: [User, Group]

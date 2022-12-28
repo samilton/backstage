@@ -5,7 +5,7 @@ nameOverride: backstage
 
 image:
   name: artifactory.elliottmgmt.com/docker-elliott-core/backstage/backstage
-  tag: "latest"
+  tag: "default"
   pullPolicy: Always
 
 labels:
@@ -30,10 +30,10 @@ service:
 resources:
   requests:
     cpu: 250m
-    memory: 200Mi
+    memory: 400Mi
   limits:
     cpu: 250m
-    memory: 200Mi
+    memory: 400Mi
 
 monitoring:
   namespace: playground-infra
@@ -47,8 +47,32 @@ affinity:
 
 tolerations:
 
+secrets:
+  database: 9322
+  k8s_ca_data: 9323
+  bitbucket_api_token: 9324
+
 environmentVariables:
   - name: JAEGER_AGENT_HOST
     valueFrom:
       fieldRef:
         fieldPath: status.hostIP
+  - name: POSTGRES_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: database-config
+        key: Password
+        optional: false
+  - name: POSTGRES_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: database-config
+        key: Username
+        optional: false
+  - name: K8S_CA_DATA
+    valueFrom:
+      secretKeyRef:
+        name: k8s-ca-data
+        key: PublicKey
+        optional: false
+

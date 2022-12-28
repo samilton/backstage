@@ -33,7 +33,7 @@ spec:
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
-              - github.com
+              - stash.elliottmgmt.com
 
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.
@@ -55,12 +55,21 @@ spec:
           - from: ./helm/template
             to: ./helm/${{ parameters.name }}
 
-    # This step publishes the contents of the working directory to GitHub.
+    - id: rename-bin
+      name: Rename bin
+      action: fs:rename
+      input:
+        files:
+          - from: ./src/bin/project.rs
+            to: ./src/bin/${{ parameters.name }}.rs
+
+
+    # This step publishes the contents of the working directory to Stash.
     - id: publish
       name: Publish
-      action: publish:github
+      action: publish:bitbucketServer
       input:
-        allowedHosts: ['github.com']
+        allowedHosts: ['stash.elliottmgmt.com']
         description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
 
