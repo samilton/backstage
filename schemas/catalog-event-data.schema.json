@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://backstage.local/schemas/catalog-event-data/v1.json",
+  "title": "CatalogEventData",
+  "description": "Payload carried in the `data` field of a catalog CloudEvent. The CloudEvent envelope itself (id, type, source, subject, time) is defined by the CloudEvents 1.0 spec; this schema only describes `data`.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind"],
+  "properties": {
+    "kind": {
+      "type": "string",
+      "description": "Entity kind, e.g. Component, Resource, API. Duplicated out of `entity` so consumers can route without parsing the full body."
+    },
+    "specType": {
+      "type": "string",
+      "description": "spec.type when present (e.g. \"service\", \"namespace\", \"website\"). Optional."
+    },
+    "entity": {
+      "type": "object",
+      "description": "Full Backstage entity at the time of the event. Omitted on `io.backstage.catalog.entity.removed`.",
+      "additionalProperties": true
+    },
+    "previousEntity": {
+      "type": "object",
+      "description": "Previous entity. Present on `changed` and `removed`, absent on `added`.",
+      "additionalProperties": true
+    }
+  }
+}

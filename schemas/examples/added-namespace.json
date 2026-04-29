@@ -1,0 +1,32 @@
+{
+  "specversion": "1.0",
+  "id": "0d3b8b14-6b3a-4f64-9f6c-9b7c4d4f6a01",
+  "source": "/backstage/catalog",
+  "type": "io.backstage.catalog.entity.added",
+  "time": "2026-04-27T22:15:03Z",
+  "subject": "resource:default/team-platform",
+  "datacontenttype": "application/json",
+  "dataschema": "https://backstage.local/schemas/catalog-event-data/v1.json",
+  "data": {
+    "kind": "Resource",
+    "specType": "namespace",
+    "entity": {
+      "apiVersion": "backstage.io/v1alpha1",
+      "kind": "Resource",
+      "metadata": {
+        "name": "team-platform",
+        "namespace": "default",
+        "annotations": {
+          "ops.backstage.io/cluster": "dev-use1",
+          "ops.backstage.io/quota-cpu": "16",
+          "ops.backstage.io/quota-memory": "32Gi"
+        }
+      },
+      "spec": {
+        "type": "namespace",
+        "owner": "guests",
+        "system": "event-bridge-demo"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: podinfo
+  description: |
+    Stefan Prodan's podinfo, deployed to the local OrbStack cluster.
+    Used to exercise the Backstage Kubernetes plugin end-to-end.
+  annotations:
+    # Matches the label `backstage.io/kubernetes-id: podinfo` on the Deployment/Service/Pod below.
+    backstage.io/kubernetes-id: podinfo
+    backstage.io/kubernetes-namespace: podinfo
+    elliott.io/tier: T2
+    elliott.io/lang: Go
+  tags:
+    - kubernetes
+    - demo
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples

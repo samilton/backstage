@@ -1,0 +1,70 @@
+# Apply with:
+#   kubectl --context orbstack apply -f examples/podinfo.k8s.yaml
+#
+# The `backstage.io/kubernetes-id` label is what the Backstage Kubernetes
+# plugin uses to associate these resources with the `podinfo` Component
+# (see examples/podinfo-k8s.yaml).
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: podinfo
+  labels:
+    backstage.io/kubernetes-id: podinfo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: podinfo
+  labels:
+    app: podinfo
+    backstage.io/kubernetes-id: podinfo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: podinfo
+  template:
+    metadata:
+      labels:
+        app: podinfo
+        backstage.io/kubernetes-id: podinfo
+    spec:
+      containers:
+        - name: podinfo
+          image: ghcr.io/stefanprodan/podinfo:6.7.1
+          ports:
+            - name: http
+              containerPort: 9898
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 9898
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 9898
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: podinfo
+  namespace: podinfo
+  labels:
+    app: podinfo
+    backstage.io/kubernetes-id: podinfo
+spec:
+  type: ClusterIP
+  selector:
+    app: podinfo
+  ports:
+    - name: http
+      port: 9898
+      targetPort: http

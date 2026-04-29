@@ -10,6 +10,8 @@ import { NavContentBlueprint } from '@backstage/plugin-app-react';
 import { SidebarLogo } from './SidebarLogo';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import HomeIcon from '@material-ui/icons/Home';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import { SidebarSearchModal } from '@backstage/plugin-search';
 import { UserSettingsSignInAvatar } from '@backstage/plugin-user-settings';
 import { NotificationsSidebarItem } from '@backstage/plugin-notifications';
@@ -32,7 +34,9 @@ export const SidebarContent = NavContentBlueprint.make({
           </SidebarGroup>
           <SidebarDivider />
           <SidebarGroup label="Menu" icon={<MenuIcon />}>
+            <SidebarItem icon={HomeIcon} to="/" text="Home" />
             {nav.take('page:catalog')}
+            <SidebarItem icon={DashboardIcon} to="/kubernetes" text="Kubernetes" />
             {nav.take('page:scaffolder')}
             <SidebarDivider />
             <SidebarScrollWrapper>

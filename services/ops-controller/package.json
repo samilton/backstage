@@ -1,0 +1,14 @@
+{
+  "name": "ops-controller",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Consumes catalog.events from NSQ and (for namespace resources) prints the Temporal -> Pulumi plan that would run.",
+  "type": "module",
+  "main": "src/index.mjs",
+  "scripts": {
+    "start": "node src/index.mjs"
+  },
+  "dependencies": {
+    "nsqjs": "^0.13.0"
+  }
+}

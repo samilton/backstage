@@ -12,10 +12,23 @@ app:
     - nav-item:catalog: false
     - nav-item:scaffolder: false
 
-    # Configure the catalog index page to be the root page, this is normally mounted on /catalog
-    - page:catalog:
-        config:
-          path: /
+    # The catalog stays on /catalog. The Elliott home module owns /.
+    # (Re-enable the path override below if you want to drop the home page
+    #  and put the catalog at the root again.)
+    # - page:catalog:
+    #     config:
+    #       path: /
+
+    # The default kubernetes plugin page is per-entity scaffolding; the
+    # Elliott `k8sModule` provides a multi-cluster fleet overview at the
+    # same path (/kubernetes). Disable the default to avoid the conflict.
+    - page:kubernetes: false
+
+    # Same story for the per-entity Kubernetes tab — we ship a custom
+    # version with a layout matching the Elliott design.
+    # The default plugin sets name="kubernetes" inside pluginId="kubernetes",
+    # so the id is namespaced as `kubernetes/kubernetes` (not just `kubernetes`).
+    - entity-content:kubernetes/kubernetes: false
 
 organization:
   name: My Company
@@ -115,6 +128,17 @@ catalog:
     - type: file
       target: ../../examples/entities.yaml
 
+    # Demo entities for watching the catalog -> NSQ event bridge.
+    # Edit examples/event-bridge-demo.yaml while the backend runs to
+    # see `catalog.entity.changed` events land on `catalog.events`.
+    - type: file
+      target: ../../examples/event-bridge-demo.yaml
+
+    # Podinfo demo: Component wired to the OrbStack k8s deployment in
+    # examples/podinfo.k8s.yaml via the backstage.io/kubernetes-id label.
+    - type: file
+      target: ../../examples/podinfo-k8s.yaml
+
     # Local example template
     - type: file
       target: ../../examples/template/template.yaml
@@ -139,6 +163,27 @@ catalog:
 
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
+  serviceLocatorMethod:
+    type: 'multiTenant'
+  clusterLocatorMethods:
+    - type: 'config'
+      clusters:
+        - name: orbstack
+          # OrbStack exposes the cluster API on the host via this URL.
+          # Verify with: kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}'
+          url: https://127.0.0.1:26443
+          authProvider: 'serviceAccount'
+          # Self-signed cert from OrbStack's local CA; easiest is to skip TLS verify
+          # for the local dev cluster. Don't do this for real clusters.
+          skipTLSVerify: true
+          skipMetricsLookup: true
+          # Create a SA + token with:
+          #   kubectl -n kube-system create serviceaccount backstage
+          #   kubectl create clusterrolebinding backstage-admin \
+          #     --clusterrole=cluster-admin --serviceaccount=kube-system:backstage
+          #   kubectl -n kube-system create token backstage --duration=8760h
+          # then export the result as K8S_ORBSTACK_SA_TOKEN before `just dev`.
+          serviceAccountToken: ${K8S_ORBSTACK_SA_TOKEN}
 
 # see https://backstage.io/docs/permissions/getting-started for more on the permission framework
 permission:
@@ -149,3 +194,11 @@ permission:
 mcpActions:
   name: 'My Company Backstage' # defaults to "backstage"
   description: 'Tools for managing your software catalog, creating new services from templates, and exploring your developer portal' # optional
+
+# Catalog -> NSQ event bridge.
+# See plugins/catalog-event-bridge-backend.
+catalogEventBridge:
+  enabled: true
+  nsqdHttpAddress: http://localhost:4151
+  topic: catalog.events
+  pollSeconds: 15

@@ -1,0 +1,39 @@
+# Local dev stack for the catalog event bridge.
+#
+# Services:
+#   - nsqlookupd / nsqd / nsqadmin : message bus (lightweight Kafka stand-in)
+#
+# Bring up: docker compose up -d
+# Tear down: docker compose down -v
+#
+# UIs:
+#   nsqadmin      http://localhost:4171
+
+services:
+  nsqlookupd:
+    image: nsqio/nsq:v1.3.0
+    command: /nsqlookupd
+    ports:
+      - "4160:4160" # tcp
+      - "4161:4161" # http
+
+  nsqd:
+    image: nsqio/nsq:v1.3.0
+    command: >
+      /nsqd
+      --lookupd-tcp-address=nsqlookupd:4160
+      --broadcast-address=127.0.0.1
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4150:4150" # tcp (publish/consume)
+      - "4151:4151" # http (publish via HTTP – what Backstage uses)
+
+  nsqadmin:
+    image: nsqio/nsq:v1.3.0
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4171:4171"
+

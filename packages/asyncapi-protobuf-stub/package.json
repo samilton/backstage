@@ -1,0 +1,8 @@
+{
+  "name": "@internal/asyncapi-protobuf-stub",
+  "version": "0.0.0",
+  "private": true,
+  "description": "No-op stand-in for @asyncapi/protobuf-schema-parser. Avoids pulling protobufjs (and its dynamic-require warning) into the frontend bundle. Backstage api-docs does not need protobuf AsyncAPI parsing for our use case.",
+  "main": "index.js",
+  "types": "index.d.ts"
+}

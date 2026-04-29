@@ -1,0 +1,84 @@
+---
+# Entities used to exercise the catalog -> NSQ event bridge.
+# Edit fields here while `yarn start` is running to trigger
+# `catalog.entity.changed` events on the `catalog.events` topic.
+# Delete an entry to trigger `catalog.entity.removed`.
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: event-bridge-demo
+  description: Synthetic system used to watch events flow through NSQ.
+spec:
+  owner: guests
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: orders-service
+  description: Demo service — change this description to emit a `changed` event.
+  tags: [demo, event-bridge]
+  annotations:
+    elliott.io/tier: T1
+    elliott.io/lang: Go
+spec:
+  type: service
+  lifecycle: production
+  owner: guests
+  system: event-bridge-demo
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payments-service
+  tags: [demo, event-bridge]
+  annotations:
+    elliott.io/tier: T1
+    elliott.io/lang: Rust
+spec:
+  type: service
+  lifecycle: production
+  owner: guests
+  system: event-bridge-demo
+  dependsOn: [component:default/orders-service]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: analytics-dashboard
+  tags: [demo, event-bridge]
+  annotations:
+    elliott.io/tier: T3
+    elliott.io/lang: TS
+spec:
+  type: website
+  lifecycle: experimental
+  owner: guests
+  system: event-bridge-demo
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: orders-db
+  tags: [demo, event-bridge]
+spec:
+  type: database
+  owner: guests
+  system: event-bridge-demo
+---
+# A `namespace` Resource — the ops-controller treats these specially and
+# (in a real deployment) hands them off to a Temporal workflow that drives
+# Pulumi automation to provision a Kubernetes namespace + baseline policy.
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: team-platform
+  description: Kubernetes namespace for the platform team.
+  tags: [demo, event-bridge, namespace]
+  annotations:
+    ops.backstage.io/cluster: dev-use1
+    ops.backstage.io/quota-cpu: "16"
+    ops.backstage.io/quota-memory: 32Gi
+spec:
+  type: namespace
+  owner: guests
+  system: event-bridge-demo
