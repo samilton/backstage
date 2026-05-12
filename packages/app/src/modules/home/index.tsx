@@ -1,5 +1,5 @@
 // packages/app/src/modules/home/index.tsx
-// Elliott home page — registered as a PageBlueprint at "/".
+// Home page — registered as a PageBlueprint at "/".
 
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
 import { PageBlueprint } from '@backstage/frontend-plugin-api';

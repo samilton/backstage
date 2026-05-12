@@ -18,8 +18,8 @@ metadata:
   description: Demo service — change this description to emit a `changed` event.
   tags: [demo, event-bridge]
   annotations:
-    elliott.io/tier: T1
-    elliott.io/lang: Go
+    platform.io/tier: T1
+    platform.io/lang: Go
 spec:
   type: service
   lifecycle: production
@@ -32,8 +32,8 @@ metadata:
   name: payments-service
   tags: [demo, event-bridge]
   annotations:
-    elliott.io/tier: T1
-    elliott.io/lang: Rust
+    platform.io/tier: T1
+    platform.io/lang: Rust
 spec:
   type: service
   lifecycle: production
@@ -47,8 +47,8 @@ metadata:
   name: analytics-dashboard
   tags: [demo, event-bridge]
   annotations:
-    elliott.io/tier: T3
-    elliott.io/lang: TS
+    platform.io/tier: T3
+    platform.io/lang: TS
 spec:
   type: website
   lifecycle: experimental

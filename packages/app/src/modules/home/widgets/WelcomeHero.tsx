@@ -1,16 +1,16 @@
 // packages/app/src/modules/home/widgets/WelcomeHero.tsx
-// "// ELLIOTT · INTERNAL DEVELOPER PLATFORM" kicker + welcome heading + date.
+// Welcome hero — kicker + welcome heading + date.
 
 import { useApi, identityApiRef } from '@backstage/core-plugin-api';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import useAsync from 'react-use/lib/useAsync';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 
 const useStyles = makeStyles(() => ({
   hero: {
-    background: elliottTokens.bannerHome,
-    border: `1px solid ${elliottTokens.borderHard}`,
+    background: appTokens.bannerHome,
+    border: `1px solid ${appTokens.borderHard}`,
     padding: '24px 28px',
     display: 'grid',
     gridTemplateColumns: '1fr auto',
@@ -22,28 +22,28 @@ const useStyles = makeStyles(() => ({
     fontSize: 11,
     letterSpacing: '0.14em',
     textTransform: 'uppercase',
-    color: elliottTokens.ink2,
+    color: appTokens.ink2,
     marginBottom: 8,
   },
   title: {
     fontSize: 30,
     fontWeight: 600,
     letterSpacing: '-0.01em',
-    color: elliottTokens.ink,
+    color: appTokens.ink,
     margin: 0,
   },
   subtitle: {
     marginTop: 4,
     fontSize: 13.5,
-    color: elliottTokens.ink2,
+    color: appTokens.ink2,
   },
   cta: {
-    background: elliottTokens.accent,
-    color: elliottTokens.accentInk,
+    backgroundColor: appTokens.accent,
+    color: appTokens.accentInk,
     padding: '8px 14px',
     fontWeight: 600,
     boxShadow: 'none',
-    '&:hover': { background: '#b9e34d', boxShadow: 'none' },
+    '&:hover': { backgroundColor: '#b9e34d', boxShadow: 'none' },
   },
 }));
 
@@ -82,7 +82,7 @@ export const WelcomeHero = () => {
   return (
     <div className={classes.hero}>
       <div>
-        <div className={classes.kicker}>// Elliott · Internal Developer Platform</div>
+        <div className={classes.kicker}>// Internal Developer Platform</div>
         <h1 className={classes.title}>Welcome back, {name}</h1>
         <div className={classes.subtitle}>
           {formatDate(new Date())} · most systems nominal

@@ -1,20 +1,20 @@
 // packages/app/src/modules/k8s/entity/widgets/EntityPodStatsRow.tsx
 
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../../theme/elliottTheme';
+import { appTokens } from '../../../theme/appTheme';
 import { EntityPodStats } from '../data';
 
 const useStyles = makeStyles(() => ({
   row: { display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: 16 },
   card: {
-    background: elliottTokens.surface,
-    border: `1px solid ${elliottTokens.border}`,
+    background: appTokens.surface,
+    border: `1px solid ${appTokens.border}`,
     padding: '16px 18px',
   },
   label: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: elliottTokens.mute, marginBottom: 8,
+    color: appTokens.mute, marginBottom: 8,
   },
   value: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
@@ -26,8 +26,8 @@ const useStyles = makeStyles(() => ({
     fontSize: 22, fontWeight: 600, lineHeight: 1.1, marginBottom: 8,
     wordBreak: 'break-all',
   },
-  detail: { fontSize: 12, color: elliottTokens.ink2, wordBreak: 'break-all' },
-  ok: { color: elliottTokens.ok }, warn: { color: elliottTokens.warn }, bad: { color: elliottTokens.bad },
+  detail: { fontSize: 12, color: appTokens.ink2, wordBreak: 'break-all' },
+  ok: { color: appTokens.ok }, warn: { color: appTokens.warn }, bad: { color: appTokens.bad },
 }));
 
 const pad = (n: number) => n.toString().padStart(2, '0');

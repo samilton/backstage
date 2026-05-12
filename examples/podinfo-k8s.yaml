@@ -9,8 +9,8 @@ metadata:
     # Matches the label `backstage.io/kubernetes-id: podinfo` on the Deployment/Service/Pod below.
     backstage.io/kubernetes-id: podinfo
     backstage.io/kubernetes-namespace: podinfo
-    elliott.io/tier: T2
-    elliott.io/lang: Go
+    platform.io/tier: T2
+    platform.io/lang: Go
   tags:
     - kubernetes
     - demo

@@ -1,0 +1,103 @@
+# examples/templates/namespace-request.yaml
+#
+# Demo template that requests a Kubernetes namespace through the same bus
+# as the NSQ-topic template. Submission posts to ops-request-bridge,
+# which publishes a CloudEvent on `ops.requests` and floats an approval
+# notification. After approval, ops-controller signals the waiting
+# Temporal `CreateNamespace` workflow, whose activity logs the dispatch
+# to ops-controller/tmp/namespace-dispatch.log (real Pulumi automation
+# slots in here later).
+#
+# The `ops:namespace:create` action is registered by
+# plugins/scaffolder-actions-ops/. See backstage/AGENTS.md for the
+# overall wire-format house style.
+
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: namespace-request
+  title: Request a Kubernetes namespace
+  description: |
+    Submit a namespace request through the bus. The ops-controller runs
+    a Temporal workflow that waits for approval, then dispatches the
+    namespace (today: log a line; tomorrow: Pulumi).
+  tags: [kubernetes, temporal, demo, ops, approval]
+spec:
+  owner: group:platform
+  type: infra
+  parameters:
+    - title: Namespace request
+      required: [namespace, owner, size]
+      properties:
+        namespace:
+          title: Namespace name
+          type: string
+          description: |
+            Kubernetes namespace name. RFC 1123 label: lowercase
+            alphanumerics + hyphens, must start and end alphanumeric,
+            max 63 characters.
+          pattern: '^[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?$'
+          ui:autofocus: true
+        owner:
+          title: Owner
+          type: string
+          description: |
+            Group or user that will own the namespace. Pick a Backstage
+            entity; the ref ends up on the audit trail and (eventually)
+            in cluster RoleBindings.
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+              - User
+        size:
+          title: Size
+          type: string
+          enum: [S, M, L]
+          enumNames:
+            - 'S — small (cpu=2, mem=4Gi)'
+            - 'M — medium (cpu=8, mem=16Gi)'
+            - 'L — large (cpu=32, mem=64Gi)'
+          default: S
+          description: |
+            T-shirt sizing. The size → ResourceQuota mapping lives in the
+            Temporal workflow so policy can change without a wire-format
+            bump.
+        reason:
+          title: Reason
+          type: string
+          description: Free text for the audit trail.
+          ui:widget: textarea
+          ui:options:
+            rows: 3
+  steps:
+    - id: publish
+      name: Publish ops.requests CloudEvent
+      action: ops:namespace:create
+      input:
+        namespace: ${{ parameters.namespace }}
+        owner: ${{ parameters.owner }}
+        size: ${{ parameters.size }}
+        reason: ${{ parameters.reason }}
+  output:
+    text:
+      - title: Request accepted
+        content: |
+          CloudEvent **${{ steps.publish.output.cloudEventType }}** with id
+          `${{ steps.publish.output.requestId }}` published to NSQ topic
+          `${{ steps.publish.output.busTopic }}`.
+
+          A Backstage notification was sent to the requesting user. Open
+          the approval page below; once approved, the ops-controller will
+          signal the waiting `CreateNamespace` Temporal workflow and the
+          dispatch will land in `ops-controller/tmp/namespace-dispatch.log`.
+    links:
+      - title: Review approval
+        url: ${{ steps.publish.output.approvalUrl }}
+        icon: docs
+      - title: Open Temporal UI
+        url: http://localhost:8233
+        icon: dashboard
+      - title: Open nsqadmin
+        url: http://localhost:4171
+        icon: dashboard

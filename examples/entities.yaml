@@ -13,8 +13,8 @@ kind: Component
 metadata:
   name: example-website
   annotations:
-    elliott.io/tier: T3
-    elliott.io/lang: TS
+    platform.io/tier: T3
+    platform.io/lang: TS
 spec:
   type: website
   lifecycle: experimental

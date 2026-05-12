@@ -5,31 +5,31 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import { useRef, useState } from 'react';
-import { elliottTokens } from '../../../theme/elliottTheme';
+import { appTokens } from '../../../theme/appTheme';
 import { PodRow, fmtAge } from '../data';
 
 const useStyles = makeStyles(() => ({
-  card: { background: elliottTokens.surface, border: `1px solid ${elliottTokens.border}` },
+  card: { background: appTokens.surface, border: `1px solid ${appTokens.border}` },
   header: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    padding: '12px 16px', borderBottom: `1px solid ${elliottTokens.border}`,
+    padding: '12px 16px', borderBottom: `1px solid ${appTokens.border}`,
     gap: 12,
   },
   title: { fontSize: 13, fontWeight: 600 },
-  cluster: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 11, color: elliottTokens.mute },
+  cluster: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 11, color: appTokens.mute },
   meta: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
   },
   table: { width: '100%', borderCollapse: 'collapse' },
   th: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase',
-    color: elliottTokens.mute, background: elliottTokens.surface2,
+    color: appTokens.mute, background: appTokens.surface2,
     padding: '8px 14px', textAlign: 'left', fontWeight: 600,
   },
-  td: { padding: '10px 14px', fontSize: 12.5, borderBottom: `1px solid ${elliottTokens.border}` },
+  td: { padding: '10px 14px', fontSize: 12.5, borderBottom: `1px solid ${appTokens.border}` },
   tdMono: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 12 },
   status: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
@@ -39,19 +39,19 @@ const useStyles = makeStyles(() => ({
   switcher: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.06em', textTransform: 'uppercase',
-    border: `1px solid ${elliottTokens.borderHard}`,
-    background: elliottTokens.surface,
+    border: `1px solid ${appTokens.borderHard}`,
+    background: appTokens.surface,
     padding: '4px 8px',
   },
-  warn: { color: elliottTokens.warn },
+  warn: { color: appTokens.warn },
 }));
 
 const phaseColor = (phase: string, ready: boolean): string => {
-  if (phase === 'Running' && ready) return elliottTokens.ok;
-  if (phase === 'Pending') return elliottTokens.warn;
-  if (phase === 'Failed' || phase === 'Unknown') return elliottTokens.bad;
-  if (phase === 'Succeeded') return elliottTokens.mute;
-  return elliottTokens.mute;
+  if (phase === 'Running' && ready) return appTokens.ok;
+  if (phase === 'Pending') return appTokens.warn;
+  if (phase === 'Failed' || phase === 'Unknown') return appTokens.bad;
+  if (phase === 'Succeeded') return appTokens.mute;
+  return appTokens.mute;
 };
 
 const fmtCpu = (m?: number): string => {
@@ -139,7 +139,7 @@ export const EntityPodsTable = ({
         </thead>
         <tbody>
           {scoped.length === 0 && (
-            <tr><td className={classes.td} colSpan={8} style={{ color: elliottTokens.mute }}>
+            <tr><td className={classes.td} colSpan={8} style={{ color: appTokens.mute }}>
               No pods.
             </td></tr>
           )}

@@ -1,10 +1,10 @@
 // packages/app/src/modules/nav/LogoIcon.tsx
-// Elliott "E" mark — lime square with monospaced E. Replaces the default Backstage logo.
+// Icon mark — lime square with monospaced E. Replaces the default Backstage logo.
 
 export const LogoIcon = () => {
   return (
     <div
-      aria-label="Elliott"
+      aria-label="Home"
       style={{
         width: 32,
         height: 32,

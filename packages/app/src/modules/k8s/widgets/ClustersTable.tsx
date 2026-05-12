@@ -1,50 +1,50 @@
 // packages/app/src/modules/k8s/widgets/ClustersTable.tsx
 
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 import { ClusterRow, FleetSummary } from '../clusterFleetApi';
 
 const useStyles = makeStyles(() => ({
-  card: { background: elliottTokens.surface, border: `1px solid ${elliottTokens.border}` },
+  card: { background: appTokens.surface, border: `1px solid ${appTokens.border}` },
   header: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    padding: '12px 16px', borderBottom: `1px solid ${elliottTokens.border}`,
+    padding: '12px 16px', borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   liveDot: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: elliottTokens.mute, display: 'inline-flex', alignItems: 'center', gap: 6,
+    color: appTokens.mute, display: 'inline-flex', alignItems: 'center', gap: 6,
   },
-  dot: { width: 8, height: 8, borderRadius: '50%', background: elliottTokens.accent, display: 'inline-block' },
+  dot: { width: 8, height: 8, borderRadius: '50%', background: appTokens.accent, display: 'inline-block' },
   table: { width: '100%', borderCollapse: 'collapse' },
   th: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase',
-    color: elliottTokens.mute, background: elliottTokens.surface2,
+    color: appTokens.mute, background: appTokens.surface2,
     padding: '8px 14px', textAlign: 'left', fontWeight: 600,
   },
-  td: { padding: '10px 14px', fontSize: 12.5, borderBottom: `1px solid ${elliottTokens.border}` },
+  td: { padding: '10px 14px', fontSize: 12.5, borderBottom: `1px solid ${appTokens.border}` },
   tdMono: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 12 },
   rowSelectable: {
     cursor: 'pointer',
-    '&:hover': { background: elliottTokens.surface2 },
+    '&:hover': { background: appTokens.surface2 },
   },
-  rowSelected: { background: elliottTokens.surface2 },
+  rowSelected: { background: appTokens.surface2 },
   providerChip: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, padding: '2px 6px',
-    background: elliottTokens.surface2,
-    border: `1px solid ${elliottTokens.borderHard}`,
+    background: appTokens.surface2,
+    border: `1px solid ${appTokens.borderHard}`,
   },
   bar: {
     display: 'inline-flex', alignItems: 'center', gap: 8,
   },
   barTrack: {
-    width: 100, height: 8, background: elliottTokens.surface2,
-    border: `1px solid ${elliottTokens.borderHard}`,
+    width: 100, height: 8, background: appTokens.surface2,
+    border: `1px solid ${appTokens.borderHard}`,
   },
-  barFill: { height: '100%', background: elliottTokens.accent },
+  barFill: { height: '100%', background: appTokens.accent },
   status: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 6,
@@ -53,16 +53,16 @@ const useStyles = makeStyles(() => ({
 }));
 
 const STATUS_COLOR: Record<ClusterRow['status'], string> = {
-  healthy:  elliottTokens.ok,
-  degraded: elliottTokens.warn,
-  down:     elliottTokens.bad,
-  unknown:  elliottTokens.mute,
+  healthy:  appTokens.ok,
+  degraded: appTokens.warn,
+  down:     appTokens.bad,
+  unknown:  appTokens.mute,
 };
 
 const barFillColor = (pct: number): string => {
-  if (pct >= 90) return elliottTokens.bad;
-  if (pct >= 75) return elliottTokens.warn;
-  return elliottTokens.accent;
+  if (pct >= 90) return appTokens.bad;
+  if (pct >= 75) return appTokens.warn;
+  return appTokens.accent;
 };
 
 export const ClustersTable = ({
@@ -101,7 +101,7 @@ export const ClustersTable = ({
         </thead>
         <tbody>
           {rows.length === 0 && (
-            <tr><td className={classes.td} colSpan={8} style={{ color: elliottTokens.mute }}>
+            <tr><td className={classes.td} colSpan={8} style={{ color: appTokens.mute }}>
               No clusters configured. Add one under <code>kubernetes.clusterLocatorMethods</code> in <code>app-config.yaml</code>.
             </td></tr>
           )}

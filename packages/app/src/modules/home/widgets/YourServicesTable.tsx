@@ -10,20 +10,20 @@ import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import useAsync from 'react-use/lib/useAsync';
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 import { syntheticHealth, entityTier, entityLang, Health } from './syntheticHealth';
 
 const useStyles = makeStyles(() => ({
   card: {
-    background: elliottTokens.surface,
-    border: `1px solid ${elliottTokens.border}`,
+    background: appTokens.surface,
+    border: `1px solid ${appTokens.border}`,
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '12px 16px',
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   meta: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
     fontSize: 10,
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
   },
   table: { width: '100%', borderCollapse: 'collapse' },
   th: {
@@ -39,8 +39,8 @@ const useStyles = makeStyles(() => ({
     fontSize: 10,
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
-    color: elliottTokens.mute,
-    background: elliottTokens.surface2,
+    color: appTokens.mute,
+    background: appTokens.surface2,
     padding: '8px 14px',
     textAlign: 'left',
     fontWeight: 600,
@@ -48,7 +48,7 @@ const useStyles = makeStyles(() => ({
   td: {
     padding: '10px 14px',
     fontSize: 12.5,
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
   },
   status: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
@@ -63,9 +63,9 @@ const useStyles = makeStyles(() => ({
 const stripRef = (s?: string) => s?.replace(/^[^:]+:(default\/)?/, '') ?? '—';
 
 const STATUS_COLOR: Record<Health, string> = {
-  healthy:  elliottTokens.ok,
-  degraded: elliottTokens.warn,
-  down:     elliottTokens.bad,
+  healthy:  appTokens.ok,
+  degraded: appTokens.warn,
+  down:     appTokens.bad,
 };
 
 export const YourServicesTable = () => {
@@ -108,7 +108,7 @@ export const YourServicesTable = () => {
         <tbody>
           {!loading && rows.length === 0 && (
             <tr>
-              <td className={classes.td} colSpan={5} style={{ color: elliottTokens.mute }}>
+              <td className={classes.td} colSpan={5} style={{ color: appTokens.mute }}>
                 No components in the catalog yet — add one under <code>examples/</code>.
               </td>
             </tr>

@@ -2,7 +2,7 @@
 // Placeholder deploy feed. Wire to a CI plugin (GitHub Actions, ArgoCD) later.
 
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 
 type Deploy = {
   ago: string;
@@ -21,22 +21,22 @@ const DEPLOYS: Deploy[] = [
 ];
 
 const STATUS_COLOR: Record<Deploy['status'], string> = {
-  succeeded:      elliottTokens.ok,
-  'rolling-back': elliottTokens.warn,
-  failed:         elliottTokens.bad,
+  succeeded:      appTokens.ok,
+  'rolling-back': appTokens.warn,
+  failed:         appTokens.bad,
 };
 
 const useStyles = makeStyles(() => ({
   card: {
-    background: elliottTokens.surface,
-    border: `1px solid ${elliottTokens.border}`,
+    background: appTokens.surface,
+    border: `1px solid ${appTokens.border}`,
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '12px 16px',
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   liveDot: {
@@ -44,13 +44,13 @@ const useStyles = makeStyles(() => ({
     fontSize: 10,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
     display: 'inline-flex',
     alignItems: 'center',
     gap: 6,
   },
   dot: {
-    width: 8, height: 8, borderRadius: '50%', background: elliottTokens.accent,
+    width: 8, height: 8, borderRadius: '50%', background: appTokens.accent,
     display: 'inline-block',
   },
   row: {
@@ -60,16 +60,16 @@ const useStyles = makeStyles(() => ({
     alignItems: 'baseline',
     padding: '10px 16px',
     fontSize: 13,
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
     '&:last-child': { borderBottom: 'none' },
   },
   ago: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
     fontSize: 12,
   },
   service: {},
-  env: { color: elliottTokens.mute, fontSize: 12 },
+  env: { color: appTokens.mute, fontSize: 12 },
   status: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 11,

@@ -41,6 +41,13 @@ backend.add(import('@backstage/plugin-catalog-backend-module-logs'));
 // catalog -> NSQ event bridge (custom; see plugins/catalog-event-bridge-backend)
 backend.add(import('@internal/plugin-catalog-event-bridge-backend'));
 
+// admin form -> NSQ ops requests (custom; see plugins/ops-request-bridge-backend)
+backend.add(import('@internal/plugin-ops-request-bridge-backend'));
+
+// scaffolder action `ops:topic:create` -> same NSQ topic as the admin form.
+// Lets templates publish ops.requests events alongside the bespoke form.
+backend.add(import('@internal/plugin-scaffolder-actions-ops'));
+
 // permission plugin
 backend.add(import('@backstage/plugin-permission-backend'));
 // See https://backstage.io/docs/permissions/getting-started for how to create your own permission policy

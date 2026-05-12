@@ -9,7 +9,7 @@ import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import useAsync from 'react-use/lib/useAsync';
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 import { syntheticHealth } from './syntheticHealth';
 
 const useStyles = makeStyles(() => ({
@@ -19,8 +19,8 @@ const useStyles = makeStyles(() => ({
     gap: 16,
   },
   card: {
-    background: elliottTokens.surface,
-    border: `1px solid ${elliottTokens.border}`,
+    background: appTokens.surface,
+    border: `1px solid ${appTokens.border}`,
     padding: '16px 18px',
   },
   label: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
     fontSize: 10,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
     marginBottom: 8,
   },
   value: {
@@ -40,11 +40,11 @@ const useStyles = makeStyles(() => ({
   },
   detail: {
     fontSize: 12,
-    color: elliottTokens.ink2,
+    color: appTokens.ink2,
   },
-  ok:   { color: elliottTokens.ok },
-  warn: { color: elliottTokens.warn },
-  bad:  { color: elliottTokens.bad },
+  ok:   { color: appTokens.ok },
+  warn: { color: appTokens.warn },
+  bad:  { color: appTokens.bad },
 }));
 
 export const ServiceStatsRow = () => {

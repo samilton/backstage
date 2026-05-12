@@ -1,0 +1,81 @@
+# examples/templates/create-nsq-topic.yaml
+#
+# Demo template that drives the same flow as /admin/topics/new (the
+# bespoke admin form), via the scaffolder gallery. Both surfaces go
+# through ops-request-bridge, which publishes the request CloudEvent on
+# NSQ topic `ops.requests` and sends an approval notification. After
+# approval, ops-controller signals Temporal and calls nsqd /topic/create.
+#
+# The `ops:topic:create` action is registered by
+# plugins/scaffolder-actions-ops/. See backstage/AGENTS.md for the
+# overall wire-format house style.
+
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-nsq-topic
+  title: Create an NSQ topic
+  description: |
+    Submit a topic-create request through the bus. The ops-controller
+    runs a Temporal workflow whose activity calls nsqd's /topic/create.
+    Demonstrates Backstage → NSQ → Temporal end-to-end.
+  tags: [nsq, temporal, demo, ops]
+spec:
+  owner: group:platform
+  type: infra
+  parameters:
+    - title: Topic
+      required: [topic]
+      properties:
+        topic:
+          title: Topic name
+          type: string
+          description: |
+            NSQ topic name. Letters, digits, dot, underscore, hyphen.
+            No leading dot, no `#ephemeral` suffix (use the toggle below).
+          pattern: '^[a-zA-Z0-9][.a-zA-Z0-9_-]{0,63}$'
+          ui:autofocus: true
+        ephemeral:
+          title: Ephemeral
+          type: boolean
+          default: false
+          description: |
+            Append `#ephemeral` so nsqd auto-deletes the topic when no
+            consumers remain. Handy for repeated demos.
+        reason:
+          title: Reason
+          type: string
+          description: Free text for the audit trail.
+          ui:widget: textarea
+          ui:options:
+            rows: 3
+  steps:
+    - id: publish
+      name: Publish ops.requests CloudEvent
+      action: ops:topic:create
+      input:
+        topic: ${{ parameters.topic }}
+        ephemeral: ${{ parameters.ephemeral }}
+        reason: ${{ parameters.reason }}
+  output:
+    text:
+      - title: Request accepted
+        content: |
+          CloudEvent **${{ steps.publish.output.cloudEventType }}** with id
+          `${{ steps.publish.output.requestId }}` published to NSQ topic
+          `${{ steps.publish.output.busTopic }}`.
+
+          A Backstage notification was sent to the requesting user. Open
+          the approval page, approve the request, then the ops-controller
+          will signal the waiting `CreateNsqTopic` Temporal workflow and
+          call nsqd's `/topic/create`.
+    links:
+      - title: Review approval
+        url: ${{ steps.publish.output.approvalUrl }}
+        icon: docs
+      - title: Open nsqadmin
+        url: http://localhost:4171
+        icon: dashboard
+      - title: Open Temporal UI
+        url: http://localhost:8233
+        icon: dashboard

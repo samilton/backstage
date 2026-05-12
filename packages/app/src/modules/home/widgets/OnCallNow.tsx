@@ -2,7 +2,7 @@
 // Placeholder on-call list. Wire to PagerDuty / Opsgenie plugin later.
 
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 
 type Shift = {
   team: string;
@@ -20,15 +20,15 @@ const SHIFTS: Shift[] = [
 
 const useStyles = makeStyles(() => ({
   card: {
-    background: elliottTokens.surface,
-    border: `1px solid ${elliottTokens.border}`,
+    background: appTokens.surface,
+    border: `1px solid ${appTokens.border}`,
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '12px 16px',
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   liveDot: {
@@ -36,18 +36,18 @@ const useStyles = makeStyles(() => ({
     fontSize: 10,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
     display: 'inline-flex',
     alignItems: 'center',
     gap: 6,
   },
   dot: {
-    width: 8, height: 8, borderRadius: '50%', background: elliottTokens.accent,
+    width: 8, height: 8, borderRadius: '50%', background: appTokens.accent,
     display: 'inline-block',
   },
   row: {
     padding: '12px 16px',
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
     '&:last-child': { borderBottom: 'none' },
   },
   topLine: {
@@ -61,21 +61,21 @@ const useStyles = makeStyles(() => ({
     fontSize: 10,
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
-    color: elliottTokens.accent,
+    color: appTokens.accent,
   },
   until: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
   },
   bottomLine: {
     display: 'flex',
     justifyContent: 'space-between',
     fontSize: 13,
   },
-  handle: { color: elliottTokens.mute, fontFamily: '"JetBrains Mono", ui-monospace, monospace' },
+  handle: { color: appTokens.mute, fontFamily: '"JetBrains Mono", ui-monospace, monospace' },
 }));
 
 export const OnCallNow = () => {

@@ -12,9 +12,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import CategoryIcon from '@material-ui/icons/Category';
+import BuildIcon from '@material-ui/icons/Build';
+import { useIsAdmin } from '../admin/useIsAdmin';
 import { SidebarSearchModal } from '@backstage/plugin-search';
 import { UserSettingsSignInAvatar } from '@backstage/plugin-user-settings';
-import { NotificationsSidebarItem } from '@backstage/plugin-notifications';
 
 export const SidebarContent = NavContentBlueprint.make({
   params: {
@@ -22,6 +24,10 @@ export const SidebarContent = NavContentBlueprint.make({
       const nav = navItems.withComponent(item => (
         <SidebarItem icon={() => item.icon} to={item.href} text={item.title} />
       ));
+      // Menu visibility gate. Stub returns true today; will call into
+      // OPA via usePermission() when the policy backend lands.
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const isAdmin = useIsAdmin();
 
       // Skipped items
       nav.take('page:search'); // Using search modal instead
@@ -35,17 +41,18 @@ export const SidebarContent = NavContentBlueprint.make({
           <SidebarDivider />
           <SidebarGroup label="Menu" icon={<MenuIcon />}>
             <SidebarItem icon={HomeIcon} to="/" text="Home" />
-            {nav.take('page:catalog')}
+            <SidebarItem icon={CategoryIcon} to="/catalog" text="Catalog" />
             <SidebarItem icon={DashboardIcon} to="/kubernetes" text="Kubernetes" />
             {nav.take('page:scaffolder')}
+            {isAdmin && (
+              <SidebarItem icon={BuildIcon} to="/admin" text="Admin" />
+            )}
             <SidebarDivider />
             <SidebarScrollWrapper>
               {nav.rest({ sortBy: 'title' })}
             </SidebarScrollWrapper>
           </SidebarGroup>
           <SidebarSpace />
-          <SidebarDivider />
-          <NotificationsSidebarItem />
           <SidebarDivider />
           <SidebarGroup
             label="Settings"

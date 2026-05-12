@@ -12,7 +12,7 @@ import { kubernetesApiRef } from '@backstage/plugin-kubernetes-react';
 import useAsync from 'react-use/lib/useAsync';
 import { useEffect, useMemo, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 
 import { EntityPodStatsRow } from './widgets/EntityPodStatsRow';
 import { EntityWorkloads } from './widgets/EntityWorkloads';
@@ -35,23 +35,23 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('md')]: { gridTemplateColumns: '1fr' },
   },
   empty: {
-    background: elliottTokens.surface,
-    border: `1px solid ${elliottTokens.border}`,
+    background: appTokens.surface,
+    border: `1px solid ${appTokens.border}`,
     padding: 24,
-    color: elliottTokens.ink2,
+    color: appTokens.ink2,
   },
   emptyKicker: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 11,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
     marginBottom: 8,
   },
   code: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
-    background: elliottTokens.surface2,
-    border: `1px solid ${elliottTokens.border}`,
+    background: appTokens.surface2,
+    border: `1px solid ${appTokens.border}`,
     padding: '1px 6px',
     fontSize: 12,
   },

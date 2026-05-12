@@ -1,0 +1,207 @@
+# examples/templates/demo-templates.yaml
+#
+# Lightweight demo templates so the /create gallery has some variety to
+# show. Each one has realistic-ish metadata (title, description, tags,
+# spec.type) so the category strip + cards render meaningfully, but the
+# `steps` are no-op `debug:log` actions — safe to "Use" without
+# scaffolding anything real. Replace with proper scaffolders as the
+# platform team builds them out.
+
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: go-grpc-service
+  title: Go gRPC service
+  description: Buf, OTel, Postgres, Helm chart, GitHub Actions CI.
+  tags: [go, grpc, postgres, helm]
+spec:
+  owner: group:platform
+  type: service
+  parameters:
+    - title: Service identity
+      required: [name, owner]
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique service name (kebab-case).
+          pattern: '^[a-z][a-z0-9-]*$'
+        description:
+          title: Description
+          type: string
+        owner:
+          title: Owner
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: [Group, User]
+  steps:
+    - id: log
+      name: Log
+      action: debug:log
+      input:
+        message: 'Demo template: would scaffold Go gRPC service "{{ parameters.name }}"'
+  output:
+    text:
+      - title: Note
+        content: This is a demo template. Wire up real scaffolder actions before using in anger.
+
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: nextjs-app
+  title: Next.js app
+  description: TypeScript + Tailwind, NextAuth, Vercel preview deploys.
+  tags: [nextjs, typescript, tailwind, vercel]
+spec:
+  owner: group:platform
+  type: website
+  parameters:
+    - title: App identity
+      required: [name, owner]
+      properties:
+        name:
+          title: Name
+          type: string
+          pattern: '^[a-z][a-z0-9-]*$'
+        owner:
+          title: Owner
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: [Group, User]
+  steps:
+    - id: log
+      name: Log
+      action: debug:log
+      input:
+        message: 'Demo template: would scaffold Next.js app "{{ parameters.name }}"'
+
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: python-pipeline
+  title: Python data pipeline
+  description: Airflow DAG skeleton, dbt project, Snowflake connection profile.
+  tags: [python, airflow, dbt, snowflake]
+spec:
+  owner: group:platform
+  type: pipeline
+  parameters:
+    - title: Pipeline identity
+      required: [name, owner]
+      properties:
+        name:
+          title: Name
+          type: string
+          pattern: '^[a-z][a-z0-9_]*$'
+        owner:
+          title: Owner
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: [Group, User]
+  steps:
+    - id: log
+      name: Log
+      action: debug:log
+      input:
+        message: 'Demo template: would scaffold Python pipeline "{{ parameters.name }}"'
+
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: rust-worker
+  title: Rust worker
+  description: Tokio runtime, NATS consumer, Prometheus metrics, Dockerfile.
+  tags: [rust, tokio, nats, prometheus]
+spec:
+  owner: group:platform
+  type: service
+  parameters:
+    - title: Worker identity
+      required: [name, owner]
+      properties:
+        name:
+          title: Name
+          type: string
+          pattern: '^[a-z][a-z0-9-]*$'
+        owner:
+          title: Owner
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: [Group, User]
+  steps:
+    - id: log
+      name: Log
+      action: debug:log
+      input:
+        message: 'Demo template: would scaffold Rust worker "{{ parameters.name }}"'
+
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: docs-site
+  title: Docs site
+  description: MDX content, full-text search, redirects, link checker in CI.
+  tags: [docs, mdx, search]
+spec:
+  owner: group:platform
+  type: documentation
+  parameters:
+    - title: Site identity
+      required: [name, owner]
+      properties:
+        name:
+          title: Name
+          type: string
+          pattern: '^[a-z][a-z0-9-]*$'
+        owner:
+          title: Owner
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: [Group, User]
+  steps:
+    - id: log
+      name: Log
+      action: debug:log
+      input:
+        message: 'Demo template: would scaffold docs site "{{ parameters.name }}"'
+
+---
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: typescript-library
+  title: TypeScript library
+  description: tsup build, vitest, changesets, npm publish workflow.
+  tags: [typescript, npm, library]
+spec:
+  owner: group:platform
+  type: library
+  parameters:
+    - title: Library identity
+      required: [name, owner]
+      properties:
+        name:
+          title: Name
+          type: string
+          pattern: '^[a-z][a-z0-9-]*$'
+        owner:
+          title: Owner
+          type: string
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds: [Group, User]
+  steps:
+    - id: log
+      name: Log
+      action: debug:log
+      input:
+        message: 'Demo template: would scaffold TS library "{{ parameters.name }}"'

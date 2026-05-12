@@ -96,3 +96,74 @@ test:
 
 # Bring everything down (bus only — yarn start is foreground anyway).
 stop: down
+
+# ---- demo stack (NSQ + Temporal + Backstage + ops-controller) ------------
+#
+# These tasks coordinate the two repos. They assume `ops-controller/` is a
+# sibling directory of `backstage/` (the layout AGENTS.md describes). The
+# three foreground processes (Backstage, consumer, worker) intentionally
+# stay foreground so their logs don't mash together — stack-up just makes
+# sure the docker-compose bits underneath them are running.
+
+ops_controller_dir := "../ops-controller"
+temporal_ui := "http://localhost:8233"
+nsqadmin_ui := "http://localhost:4171"
+
+# Bring up NSQ (this repo) and Temporal (../ops-controller) docker stacks.
+# Idempotent — safe to run repeatedly. Prints the three foreground
+# commands you still need to start by hand.
+stack-up:
+    @echo "→ NSQ stack (backstage/docker-compose.yml)"
+    @docker compose up -d
+    @curl -fsS -X POST "{{nsqd_http}}/topic/create?topic=ops.requests" >/dev/null || true
+    @curl -fsS -X POST "{{nsqd_http}}/topic/create?topic=ops.responses" >/dev/null || true
+    @echo
+    @echo "→ Temporal stack ({{ops_controller_dir}}/docker-compose.yml)"
+    @if [ ! -d {{ops_controller_dir}} ]; then \
+        echo "  !! {{ops_controller_dir}} not found — clone it as a sibling of backstage/"; \
+        exit 1; \
+    fi
+    @cd {{ops_controller_dir}} && docker compose up -d
+    @echo
+    @echo "✅ docker stacks up:"
+    @echo "   nsqadmin:    {{nsqadmin_ui}}"
+    @echo "   temporal UI: {{temporal_ui}}"
+    @echo
+    @echo "Now start the three foreground processes (each in its own terminal):"
+    @echo
+    @echo "   # 1. Backstage app + backend"
+    @echo "   cd $(pwd) && yarn start"
+    @echo
+    @echo "   # 2. ops-controller NSQ -> Temporal consumer"
+    @echo "   cd {{ops_controller_dir}} && just run"
+    @echo
+    @echo "   # 3. ops-controller Temporal worker"
+    @echo "   cd {{ops_controller_dir}} && just worker"
+
+# Stop both docker stacks. Foreground processes you Ctrl-C yourself.
+stack-down:
+    @echo "→ NSQ stack down"
+    @docker compose down
+    @if [ -d {{ops_controller_dir}} ]; then \
+        echo "→ Temporal stack down"; \
+        cd {{ops_controller_dir}} && docker compose down; \
+    fi
+
+# Quick health snapshot of the demo stack.
+stack-status:
+    @echo "== docker (this repo) =="
+    @docker compose ps 2>/dev/null || echo "  (no compose project here)"
+    @echo
+    @echo "== docker (ops-controller) =="
+    @if [ -d {{ops_controller_dir}} ]; then \
+        cd {{ops_controller_dir}} && docker compose ps; \
+    else \
+        echo "  {{ops_controller_dir}} not found"; \
+    fi
+    @echo
+    @echo "== nsqlookupd topics =="
+    @curl -fsS "{{lookupd_http}}/topics" 2>/dev/null | jq . || echo "  (nsqlookupd not reachable on {{lookupd_http}})"
+    @echo
+    @echo "== temporal frontend =="
+    @curl -fsS -o /dev/null -w "  http %{http_code} from temporal UI {{temporal_ui}}\n" "{{temporal_ui}}/" \
+        || echo "  (temporal UI not reachable on {{temporal_ui}})"

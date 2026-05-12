@@ -2,7 +2,7 @@
 // Tier / lang / health resolution for catalog Components.
 //
 // Resolution order (first hit wins):
-//   1. Real annotation       (elliott.io/tier, elliott.io/lang)
+//   1. Real annotation       (platform.io/tier, platform.io/lang)
 //   2. Derived from catalog  (spec.lifecycle → tier, spec.type → lang hint)
 //   3. Deterministic synthetic (FNV-1a of name) so demos stay visually stable
 //
@@ -11,8 +11,8 @@
 
 import type { Entity } from '@backstage/catalog-model';
 
-export const TIER_ANNOTATION = 'elliott.io/tier';
-export const LANG_ANNOTATION = 'elliott.io/lang';
+export const TIER_ANNOTATION = 'platform.io/tier';
+export const LANG_ANNOTATION = 'platform.io/lang';
 
 const hash = (s: string): number => {
   let h = 2166136261;
@@ -40,7 +40,7 @@ export const syntheticTier = (name: string) => TIERS[hash(`tier:${name}`) % 3];
 export const syntheticLang = (name: string) => LANGS[hash(`lang:${name}`) % LANGS.length];
 
 // Lifecycle → tier hint. Mirrors a common convention: prod = T1, staging = T2,
-// everything else = T3. Override per-entity with the elliott.io/tier annotation.
+// everything else = T3. Override per-entity with the platform.io/tier annotation.
 const LIFECYCLE_TIER: Record<string, string> = {
   production:   'T1',
   prod:         'T1',

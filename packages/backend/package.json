@@ -45,6 +45,8 @@
     "@backstage/plugin-signals-backend": "^0.3.14",
     "@backstage/plugin-techdocs-backend": "^2.1.7",
     "@internal/plugin-catalog-event-bridge-backend": "workspace:^",
+    "@internal/plugin-ops-request-bridge-backend": "workspace:^",
+    "@internal/plugin-scaffolder-actions-ops": "workspace:^",
     "app": "link:../app",
     "better-sqlite3": "^12.0.0",
     "node-gyp": "^10.0.0",

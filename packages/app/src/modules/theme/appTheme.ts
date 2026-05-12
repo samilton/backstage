@@ -1,5 +1,5 @@
-// packages/app/src/modules/theme/elliottTheme.ts
-// Elliott — light theme for Backstage
+// packages/app/src/modules/theme/appTheme.ts
+// Custom light theme for Backstage
 // Warm-paper neutrals + electric lime accent + dark sidebar.
 //
 // Targets the new declarative frontend system (`@backstage/frontend-defaults`)
@@ -16,7 +16,7 @@ import {
 } from '@backstage/theme';
 
 // ── Tokens (single source of truth — mirror these in components.ts) ────────
-export const elliottTokens = {
+export const appTokens = {
   bg:          '#f7f6f1',
   surface:     '#ffffff',
   surface2:    '#f1efe7',
@@ -53,41 +53,41 @@ const sansStack =
 const monoStack =
   '"JetBrains Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace';
 
-export const elliottTheme: UnifiedTheme = createUnifiedTheme({
+export const appTheme: UnifiedTheme = createUnifiedTheme({
   ...createBaseThemeOptions({
     palette: {
       ...palettes.light,
       mode: 'light',
       primary: {
-        main: elliottTokens.ink,
-        light: elliottTokens.ink2,
+        main: appTokens.ink,
+        light: appTokens.ink2,
         dark: '#000000',
       },
       secondary: {
-        main: elliottTokens.accent,
-        contrastText: elliottTokens.accentInk,
+        main: appTokens.accent,
+        contrastText: appTokens.accentInk,
       },
       background: {
-        default: elliottTokens.bg,
-        paper: elliottTokens.surface,
+        default: appTokens.bg,
+        paper: appTokens.surface,
       },
       text: {
-        primary: elliottTokens.ink,
-        secondary: elliottTokens.mute,
+        primary: appTokens.ink,
+        secondary: appTokens.mute,
       },
       status: {
-        ok: elliottTokens.ok,
-        warning: elliottTokens.warn,
-        error: elliottTokens.bad,
-        running: elliottTokens.accent,
-        pending: elliottTokens.warn,
-        aborted: elliottTokens.mute,
+        ok: appTokens.ok,
+        warning: appTokens.warn,
+        error: appTokens.bad,
+        running: appTokens.accent,
+        pending: appTokens.warn,
+        aborted: appTokens.mute,
       },
       navigation: {
-        background: elliottTokens.sidebarBg,
-        indicator: elliottTokens.accent,
-        color: elliottTokens.sidebarInk,
-        selectedColor: elliottTokens.accent,
+        background: appTokens.sidebarBg,
+        indicator: appTokens.accent,
+        color: appTokens.sidebarInk,
+        selectedColor: appTokens.accent,
         navItem: {
           hoverBackground: 'rgba(168,216,58,0.08)',
         },
@@ -95,55 +95,55 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
           background: '#1a1d18',
         },
       },
-      border: elliottTokens.border,
-      textContrast: elliottTokens.ink,
-      textVerySubtle: elliottTokens.mute,
-      textSubtle: elliottTokens.ink2,
-      highlight: elliottTokens.accentSoft,
+      border: appTokens.border,
+      textContrast: appTokens.ink,
+      textVerySubtle: appTokens.mute,
+      textSubtle: appTokens.ink2,
+      highlight: appTokens.accentSoft,
       errorBackground: '#fbe4e0',
       warningBackground: '#fff3dc',
-      infoBackground: elliottTokens.accentSoft,
-      errorText: elliottTokens.bad,
-      infoText: elliottTokens.ink,
-      warningText: elliottTokens.warn,
-      linkHover: elliottTokens.accent,
-      link: elliottTokens.ink,
-      gold: elliottTokens.accent,
+      infoBackground: appTokens.accentSoft,
+      errorText: appTokens.bad,
+      infoText: appTokens.ink,
+      warningText: appTokens.warn,
+      linkHover: appTokens.accent,
+      link: appTokens.ink,
+      gold: appTokens.accent,
       banner: {
-        info: elliottTokens.bannerHome,
+        info: appTokens.bannerHome,
         error: '#fbe4e0',
-        text: elliottTokens.ink,
-        link: elliottTokens.ink,
-        closeButtonColor: elliottTokens.ink,
+        text: appTokens.ink,
+        link: appTokens.ink,
+        closeButtonColor: appTokens.ink,
         warning: '#fff3dc',
       },
       bursts: {
-        fontColor: elliottTokens.ink,
-        slackChannelText: elliottTokens.mute,
-        backgroundColor: { default: elliottTokens.bannerHome },
+        fontColor: appTokens.ink,
+        slackChannelText: appTokens.mute,
+        backgroundColor: { default: appTokens.bannerHome },
         gradient: { linear: 'none' },
       },
       pinSidebarButton: {
-        icon: elliottTokens.sidebarInk,
-        background: elliottTokens.sidebarBg,
+        icon: appTokens.sidebarInk,
+        background: appTokens.sidebarBg,
       },
       tabbar: {
-        indicator: elliottTokens.accent,
+        indicator: appTokens.accent,
       },
     },
     fontFamily: sansStack,
     defaultPageTheme: 'home',
     // Page themes: replace gradient banners with flat warm beige surfaces.
     pageTheme: {
-      home:          genPageTheme({ colors: [elliottTokens.bannerHome, elliottTokens.bannerHome], shape: shapes.wave }),
-      documentation: genPageTheme({ colors: [elliottTokens.bannerDoc,  elliottTokens.bannerDoc],  shape: shapes.wave2 }),
-      tool:          genPageTheme({ colors: [elliottTokens.bannerCat,  elliottTokens.bannerCat],  shape: shapes.round }),
-      service:       genPageTheme({ colors: [elliottTokens.bannerCat,  elliottTokens.bannerCat],  shape: shapes.wave }),
-      website:       genPageTheme({ colors: [elliottTokens.bannerCat,  elliottTokens.bannerCat],  shape: shapes.wave }),
-      library:       genPageTheme({ colors: [elliottTokens.bannerCat,  elliottTokens.bannerCat],  shape: shapes.wave }),
-      other:         genPageTheme({ colors: [elliottTokens.bannerCat,  elliottTokens.bannerCat],  shape: shapes.wave }),
-      app:           genPageTheme({ colors: [elliottTokens.bannerCat,  elliottTokens.bannerCat],  shape: shapes.wave }),
-      apis:          genPageTheme({ colors: [elliottTokens.bannerCat,  elliottTokens.bannerCat],  shape: shapes.wave }),
+      home:          genPageTheme({ colors: [appTokens.bannerHome, appTokens.bannerHome], shape: shapes.wave }),
+      documentation: genPageTheme({ colors: [appTokens.bannerDoc,  appTokens.bannerDoc],  shape: shapes.wave2 }),
+      tool:          genPageTheme({ colors: [appTokens.bannerCat,  appTokens.bannerCat],  shape: shapes.round }),
+      service:       genPageTheme({ colors: [appTokens.bannerCat,  appTokens.bannerCat],  shape: shapes.wave }),
+      website:       genPageTheme({ colors: [appTokens.bannerCat,  appTokens.bannerCat],  shape: shapes.wave }),
+      library:       genPageTheme({ colors: [appTokens.bannerCat,  appTokens.bannerCat],  shape: shapes.wave }),
+      other:         genPageTheme({ colors: [appTokens.bannerCat,  appTokens.bannerCat],  shape: shapes.wave }),
+      app:           genPageTheme({ colors: [appTokens.bannerCat,  appTokens.bannerCat],  shape: shapes.wave }),
+      apis:          genPageTheme({ colors: [appTokens.bannerCat,  appTokens.bannerCat],  shape: shapes.wave }),
     },
   }),
   fontFamily: sansStack,
@@ -182,19 +182,19 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
         header: () => ({
           paddingBottom: 0,
           boxShadow: 'none',
-          borderBottom: `1px solid ${elliottTokens.borderHard}`,
+          borderBottom: `1px solid ${appTokens.borderHard}`,
         }),
         title: () => ({
-          color: elliottTokens.bannerInk,
+          color: appTokens.bannerInk,
           fontWeight: 600,
           fontSize: 30,
           letterSpacing: '-0.01em',
         }),
         subtitle: () => ({
-          color: elliottTokens.bannerInk2,
+          color: appTokens.bannerInk2,
         }),
         type: () => ({
-          color: elliottTokens.ink2,
+          color: appTokens.ink2,
           fontFamily: monoStack,
           fontSize: 10.5,
           letterSpacing: '0.14em',
@@ -205,7 +205,7 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
     BackstageHeaderTabs: {
       styleOverrides: {
         defaultTab: () => ({
-          color: elliottTokens.bannerInk2,
+          color: appTokens.bannerInk2,
           fontFamily: sansStack,
           fontSize: 13,
           fontWeight: 500,
@@ -216,10 +216,10 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
           minWidth: 'auto',
         }),
         selected: () => ({
-          color: elliottTokens.ink,
+          color: appTokens.ink,
         }),
         tabsWrapper: () => ({
-          borderBottom: `1px solid ${elliottTokens.borderHard}`,
+          borderBottom: `1px solid ${appTokens.borderHard}`,
           paddingLeft: 36,
         }),
         tabRoot: () => ({
@@ -230,7 +230,7 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
     BackstageContent: {
       styleOverrides: {
         root: () => ({
-          background: elliottTokens.bg,
+          background: appTokens.bg,
           padding: 24,
         }),
       },
@@ -238,23 +238,23 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
     BackstageSidebar: {
       styleOverrides: {
         drawer: () => ({
-          background: elliottTokens.sidebarBg,
-          borderRight: `1px solid ${elliottTokens.borderHard}`,
+          background: appTokens.sidebarBg,
+          borderRight: `1px solid ${appTokens.borderHard}`,
         }),
       },
     },
     BackstageSidebarItem: {
       styleOverrides: {
         root: () => ({
-          color: elliottTokens.sidebarInk,
+          color: appTokens.sidebarInk,
           '&:hover': {
             background: 'rgba(168,216,58,0.08)',
-            color: elliottTokens.accent,
+            color: appTokens.accent,
           },
         }),
         selected: () => ({
-          color: elliottTokens.accent,
-          borderLeft: `2px solid ${elliottTokens.accent}`,
+          color: appTokens.accent,
+          borderLeft: `2px solid ${appTokens.accent}`,
           background: 'rgba(168,216,58,0.08)',
         }),
         label: () => ({
@@ -272,24 +272,24 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
           fontSize: 13,
           fontWeight: 600,
           letterSpacing: '0.02em',
-          color: elliottTokens.ink,
+          color: appTokens.ink,
           textTransform: 'none',
         }),
       },
     },
     MuiPaper: {
       styleOverrides: {
-        root: { backgroundColor: elliottTokens.surface },
+        root: { backgroundColor: appTokens.surface },
         rounded: { borderRadius: 0 },
-        elevation1: { boxShadow: 'none', border: `1px solid ${elliottTokens.border}` },
-        elevation2: { boxShadow: 'none', border: `1px solid ${elliottTokens.border}` },
+        elevation1: { boxShadow: 'none', border: `1px solid ${appTokens.border}` },
+        elevation2: { boxShadow: 'none', border: `1px solid ${appTokens.border}` },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          backgroundColor: elliottTokens.surface,
-          border: `1px solid ${elliottTokens.border}`,
+          backgroundColor: appTokens.surface,
+          border: `1px solid ${appTokens.border}`,
           boxShadow: 'none',
           borderRadius: 0,
         },
@@ -299,7 +299,7 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
       styleOverrides: {
         root: {
           padding: '12px 16px',
-          borderBottom: `1px solid ${elliottTokens.border}`,
+          borderBottom: `1px solid ${appTokens.border}`,
         },
         title: { fontSize: 13, fontWeight: 600, letterSpacing: '0.02em' },
       },
@@ -322,18 +322,30 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
           padding: '8px 14px',
           fontSize: 12.5,
         },
+        // Use `backgroundColor` (not `background` shorthand) so JSS
+        // merges with MUI v4's own `backgroundColor` rule rather than
+        // sitting alongside it. With the shorthand, MUI's rule wins on
+        // primary buttons and we get black-on-black (palette.primary.main
+        // is `ink`, our text override is `accentInk` — both near-black).
         containedPrimary: {
-          background: elliottTokens.accent,
-          color: elliottTokens.accentInk,
+          backgroundColor: appTokens.accent,
+          color: appTokens.accentInk,
           boxShadow: 'none',
-          '&:hover': { background: '#b9e34d', boxShadow: 'none' },
+          '&:hover': { backgroundColor: '#b9e34d', boxShadow: 'none' },
+          // Default MUI v4 disabled state for contained buttons drops
+          // both bg and text to translucent black; that reads as
+          // "black blob" on light surfaces. Give it a readable muted look.
+          '&$disabled': {
+            backgroundColor: appTokens.surface2,
+            color: appTokens.mute,
+          },
         },
         outlined: {
-          border: `1px solid ${elliottTokens.borderHard}`,
-          color: elliottTokens.ink,
-          '&:hover': { background: elliottTokens.surface2, border: `1px solid ${elliottTokens.borderHard}` },
+          border: `1px solid ${appTokens.borderHard}`,
+          color: appTokens.ink,
+          '&:hover': { backgroundColor: appTokens.surface2, border: `1px solid ${appTokens.borderHard}` },
         },
-        text: { color: elliottTokens.ink },
+        text: { color: appTokens.ink },
       },
     },
     MuiChip: {
@@ -343,33 +355,33 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
           fontSize: 10,
           height: 22,
           borderRadius: 0,
-          background: elliottTokens.accentSoft,
-          color: elliottTokens.ink2,
+          background: appTokens.accentSoft,
+          color: appTokens.ink2,
           letterSpacing: '0.04em',
           textTransform: 'lowercase',
           padding: '0 6px',
         },
         outlined: {
-          background: elliottTokens.surface2,
-          border: `1px solid ${elliottTokens.borderHard}`,
+          background: appTokens.surface2,
+          border: `1px solid ${appTokens.borderHard}`,
         },
         label: { padding: '0 6px' },
       },
     },
     MuiTableHead: {
       styleOverrides: {
-        root: { background: elliottTokens.surface2 },
+        root: { background: appTokens.surface2 },
       },
     },
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottom: `1px solid ${elliottTokens.border}`,
+          borderBottom: `1px solid ${appTokens.border}`,
           padding: '10px 14px',
           fontSize: 12.5,
         },
         head: {
-          color: elliottTokens.mute,
+          color: appTokens.mute,
           fontWeight: 600,
           fontFamily: monoStack,
           fontSize: 10,
@@ -383,8 +395,8 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
       styleOverrides: {
         root: {
           '&:nth-of-type(even)': { background: 'transparent' },
-          '&:nth-of-type(odd)':  { background: elliottTokens.surface },
-          '&:hover': { background: elliottTokens.surface2 },
+          '&:nth-of-type(odd)':  { background: appTokens.surface },
+          '&:hover': { background: appTokens.surface2 },
         },
       },
     },
@@ -395,7 +407,7 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
     },
     MuiTabs: {
       styleOverrides: {
-        indicator: { backgroundColor: elliottTokens.ink, height: 2 },
+        indicator: { backgroundColor: appTokens.ink, height: 2 },
       },
     },
     MuiInputBase: {
@@ -411,17 +423,17 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
     MuiCheckbox: {
       styleOverrides: {
         root: {
-          color: elliottTokens.borderHard,
-          '&$checked': { color: elliottTokens.accent },
+          color: appTokens.borderHard,
+          '&$checked': { color: appTokens.accent },
         },
       },
     },
     MuiLink: {
       styleOverrides: {
         root: {
-          color: elliottTokens.ink,
-          textDecorationColor: elliottTokens.borderHard,
-          '&:hover': { color: elliottTokens.accent, textDecorationColor: elliottTokens.accent },
+          color: appTokens.ink,
+          textDecorationColor: appTokens.borderHard,
+          '&:hover': { color: appTokens.accent, textDecorationColor: appTokens.accent },
         },
       },
     },
@@ -437,7 +449,7 @@ export const elliottTheme: UnifiedTheme = createUnifiedTheme({
           fontSize: 10,
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
-          color: elliottTokens.mute,
+          color: appTokens.mute,
           fontWeight: 600,
         }),
       },

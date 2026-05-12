@@ -5,13 +5,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 import { FleetSummary } from '../clusterFleetApi';
 
 const useStyles = makeStyles(() => ({
   hero: {
-    background: elliottTokens.bannerCat,
-    border: `1px solid ${elliottTokens.borderHard}`,
+    background: appTokens.bannerCat,
+    border: `1px solid ${appTokens.borderHard}`,
     padding: '24px 28px',
     display: 'grid',
     gridTemplateColumns: '1fr auto',
@@ -23,28 +23,28 @@ const useStyles = makeStyles(() => ({
     fontSize: 11,
     letterSpacing: '0.14em',
     textTransform: 'uppercase',
-    color: elliottTokens.ink2,
+    color: appTokens.ink2,
     marginBottom: 8,
   },
   title: {
     fontSize: 30,
     fontWeight: 600,
     letterSpacing: '-0.01em',
-    color: elliottTokens.ink,
+    color: appTokens.ink,
     margin: 0,
   },
   subtitle: {
     marginTop: 4,
     fontSize: 13.5,
-    color: elliottTokens.ink2,
+    color: appTokens.ink2,
   },
   ctx: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 11,
     letterSpacing: '0.06em',
     textTransform: 'uppercase',
-    border: `1px solid ${elliottTokens.borderHard}`,
-    background: elliottTokens.surface,
+    border: `1px solid ${appTokens.borderHard}`,
+    background: appTokens.surface,
   },
   menuItem: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
@@ -53,7 +53,7 @@ const useStyles = makeStyles(() => ({
   },
   menuItemMeta: {
     marginLeft: 12,
-    color: elliottTokens.mute,
+    color: appTokens.mute,
     fontSize: 10,
     letterSpacing: '0.08em',
     textTransform: 'uppercase',

@@ -1,4 +1,4 @@
-// packages/app/src/modules/entity/EntityElliottHeader.tsx
+// packages/app/src/modules/entity/EntityPageHeader.tsx
 //
 // Drop-in replacement for Backstage's default <EntityHeader>. Layout:
 //   ┌──────────────────────────────────────────────────────────────────┐
@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { useAsyncEntity } from '@backstage/plugin-catalog-react';
-import { elliottTokens } from '../theme/elliottTheme';
+import { appTokens } from '../theme/appTheme';
 import {
   syntheticHealth,
   entityTier,
@@ -25,8 +25,13 @@ import {
 
 const useStyles = makeStyles(() => ({
   hero: {
-    background: elliottTokens.bannerCat,
-    borderBottom: `1px solid ${elliottTokens.borderHard}`,
+    // BackstagePage is a CSS grid with named areas; the header must claim
+    // `pageHeader` or it auto-places into `pageNav` and shoves the content
+    // sideways.
+    gridArea: 'pageHeader',
+    width: '100%',
+    background: appTokens.bannerCat,
+    borderBottom: `1px solid ${appTokens.borderHard}`,
     padding: '24px 28px 20px',
     display: 'grid',
     gridTemplateColumns: '1fr auto',
@@ -38,21 +43,21 @@ const useStyles = makeStyles(() => ({
     fontSize: 11,
     letterSpacing: '0.14em',
     textTransform: 'uppercase',
-    color: elliottTokens.ink2,
+    color: appTokens.ink2,
     marginBottom: 8,
   },
-  kickerLink: { color: 'inherit', textDecoration: 'none', '&:hover': { color: elliottTokens.ink } },
+  kickerLink: { color: 'inherit', textDecoration: 'none', '&:hover': { color: appTokens.ink } },
   title: {
     fontSize: 30,
     fontWeight: 600,
     letterSpacing: '-0.01em',
-    color: elliottTokens.ink,
+    color: appTokens.ink,
     margin: 0,
   },
   subtitle: {
     marginTop: 4,
     fontSize: 13.5,
-    color: elliottTokens.ink2,
+    color: appTokens.ink2,
   },
   right: {
     display: 'flex',
@@ -66,32 +71,32 @@ const useStyles = makeStyles(() => ({
     textTransform: 'uppercase',
     fontWeight: 600,
     padding: '5px 10px',
-    border: `1px solid ${elliottTokens.borderHard}`,
-    background: elliottTokens.surface,
+    border: `1px solid ${appTokens.borderHard}`,
+    background: appTokens.surface,
     display: 'inline-flex',
     alignItems: 'center',
     gap: 6,
   },
   pillSwatch: { width: 8, height: 8, display: 'inline-block' },
   cta: {
-    background: elliottTokens.accent,
-    color: elliottTokens.accentInk,
+    backgroundColor: appTokens.accent,
+    color: appTokens.accentInk,
     padding: '8px 14px',
     fontWeight: 600,
     boxShadow: 'none',
-    '&:hover': { background: '#b9e34d', boxShadow: 'none' },
+    '&:hover': { backgroundColor: '#b9e34d', boxShadow: 'none' },
   },
 }));
 
 const STATUS_COLOR: Record<Health, string> = {
-  healthy:  elliottTokens.ok,
-  degraded: elliottTokens.warn,
-  down:     elliottTokens.bad,
+  healthy:  appTokens.ok,
+  degraded: appTokens.warn,
+  down:     appTokens.bad,
 };
 
 const fmtTier = (t: string): string => /^T\d$/i.test(t) ? `Tier ${t.slice(1)}` : t;
 
-export const EntityElliottHeader = () => {
+export const EntityPageHeader = () => {
   const classes = useStyles();
   const { entity, loading, error } = useAsyncEntity();
 

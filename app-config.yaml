@@ -16,7 +16,7 @@ app:
     # Entity detail pages remain provided by @backstage/plugin-catalog.
     - page:catalog: false
 
-    # The catalog stays on /catalog. The Elliott home module owns /.
+    # The catalog stays on /catalog. The home module owns /.
     # (Re-enable the path override below if you want to drop the home page
     #  and put the catalog at the root again.)
     # - page:catalog:
@@ -24,12 +24,12 @@ app:
     #       path: /
 
     # The default kubernetes plugin page is per-entity scaffolding; the
-    # Elliott `k8sModule` provides a multi-cluster fleet overview at the
+    # The `k8sModule` provides a multi-cluster fleet overview at the
     # same path (/kubernetes). Disable the default to avoid the conflict.
     - page:kubernetes: false
 
     # Same story for the per-entity Kubernetes tab — we ship a custom
-    # version with a layout matching the Elliott design.
+    # version with a custom layout.
     # The default plugin sets name="kubernetes" inside pluginId="kubernetes",
     # so the id is namespaced as `kubernetes/kubernetes` (not just `kubernetes`).
     - entity-content:kubernetes/kubernetes: false

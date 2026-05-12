@@ -6,7 +6,7 @@ import { useApi } from '@backstage/core-plugin-api';
 import { catalogApiRef } from '@backstage/plugin-catalog-react';
 import useAsync from 'react-use/lib/useAsync';
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 
 type Tmpl = { name: string; title: string; description: string; tagsLine: string; uses: number };
 
@@ -21,15 +21,15 @@ const PLACEHOLDERS: Tmpl[] = [
 
 const useStyles = makeStyles(theme => ({
   card: {
-    background: elliottTokens.surface,
-    border: `1px solid ${elliottTokens.border}`,
+    background: appTokens.surface,
+    border: `1px solid ${appTokens.border}`,
   },
   header: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '12px 16px',
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   meta: {
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: 10,
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
   },
   grid: {
     display: 'grid',
@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
   cell: {
     padding: '14px 16px',
-    borderRight: `1px solid ${elliottTokens.border}`,
+    borderRight: `1px solid ${appTokens.border}`,
     '&:last-child': { borderRight: 'none' },
     display: 'grid',
     gap: 8,
@@ -60,23 +60,23 @@ const useStyles = makeStyles(theme => ({
   num: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 11,
-    color: elliottTokens.accent,
+    color: appTokens.accent,
     letterSpacing: '0.08em',
   },
   uses: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10,
-    color: elliottTokens.mute,
+    color: appTokens.mute,
   },
   tmplTitle: { fontSize: 14, fontWeight: 600 },
-  desc: { fontSize: 12, color: elliottTokens.ink2, lineHeight: 1.4 },
+  desc: { fontSize: 12, color: appTokens.ink2, lineHeight: 1.4 },
   use: {
     marginTop: 4,
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10,
     letterSpacing: '0.12em',
     textTransform: 'uppercase',
-    color: elliottTokens.accent,
+    color: appTokens.accent,
     textDecoration: 'none',
   },
 }));

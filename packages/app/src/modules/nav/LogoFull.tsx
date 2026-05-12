@@ -1,10 +1,10 @@
 // packages/app/src/modules/nav/LogoFull.tsx
-// Elliott full wordmark — lime "E" square + "ELLIOTT" wordmark in mono.
+// Full wordmark — lime square mark + text wordmark in mono.
 
 export const LogoFull = () => {
   return (
     <div
-      aria-label="Elliott"
+      aria-label="Home"
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -36,7 +36,7 @@ export const LogoFull = () => {
           letterSpacing: '0.08em',
         }}
       >
-        ELLIOTT
+        PLATFORM
       </span>
     </div>
   );

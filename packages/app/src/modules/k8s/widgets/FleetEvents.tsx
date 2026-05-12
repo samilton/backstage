@@ -1,31 +1,31 @@
 // packages/app/src/modules/k8s/widgets/FleetEvents.tsx
 
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 import { FleetEvent } from '../clusterFleetApi';
 
 const useStyles = makeStyles(() => ({
-  card: { background: elliottTokens.surface, border: `1px solid ${elliottTokens.border}` },
+  card: { background: appTokens.surface, border: `1px solid ${appTokens.border}` },
   header: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    padding: '12px 16px', borderBottom: `1px solid ${elliottTokens.border}`,
+    padding: '12px 16px', borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   meta: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
-    fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: elliottTokens.mute,
+    fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: appTokens.mute,
   },
-  warnTone: { color: elliottTokens.warn },
+  warnTone: { color: appTokens.warn },
   row: {
     display: 'grid',
     gridTemplateColumns: '52px 1fr',
     columnGap: 12,
     padding: '10px 16px',
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
     fontSize: 13,
     '&:last-child': { borderBottom: 'none' },
   },
-  ago: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 12, color: elliottTokens.mute },
+  ago: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 12, color: appTokens.mute },
   topLine: { display: 'flex', gap: 10, alignItems: 'center', marginBottom: 2 },
   reason: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
@@ -35,10 +35,10 @@ const useStyles = makeStyles(() => ({
   swatch: { width: 8, height: 8, display: 'inline-block' },
   cluster: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 10,
-    letterSpacing: '0.06em', textTransform: 'uppercase', color: elliottTokens.mute,
+    letterSpacing: '0.06em', textTransform: 'uppercase', color: appTokens.mute,
   },
-  message: { color: elliottTokens.ink2, fontSize: 12.5 },
-  empty: { padding: '14px 16px', color: elliottTokens.mute, fontSize: 12.5 },
+  message: { color: appTokens.ink2, fontSize: 12.5 },
+  empty: { padding: '14px 16px', color: appTokens.mute, fontSize: 12.5 },
 }));
 
 const ago = (iso: string): string => {
@@ -76,7 +76,7 @@ export const FleetEvents = ({
         <div className={classes.empty}>No recent events.</div>
       )}
       {scoped.slice(0, 10).map(e => {
-        const tone = e.type === 'Warning' ? elliottTokens.warn : elliottTokens.ok;
+        const tone = e.type === 'Warning' ? appTokens.warn : appTokens.ok;
         return (
           <div key={e.id} className={classes.row}>
             <span className={classes.ago}>{ago(e.occurredAt)}</span>

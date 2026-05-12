@@ -5,29 +5,29 @@
 // separate journey — see the design notes when we get to it.
 
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../../theme/elliottTheme';
+import { appTokens } from '../../../theme/appTheme';
 
 const useStyles = makeStyles(() => ({
-  card: { background: elliottTokens.surface, border: `1px solid ${elliottTokens.border}` },
+  card: { background: appTokens.surface, border: `1px solid ${appTokens.border}` },
   header: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    padding: '12px 16px', borderBottom: `1px solid ${elliottTokens.border}`,
+    padding: '12px 16px', borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   meta: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
   },
   body: {
     padding: '14px 16px',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
     fontSize: 12.5,
   },
   todo: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: elliottTokens.warn,
+    color: appTokens.warn,
     marginRight: 8,
   },
 }));

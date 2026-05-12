@@ -1,34 +1,34 @@
 // packages/app/src/modules/k8s/widgets/TopNamespaces.tsx
 
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../theme/elliottTheme';
+import { appTokens } from '../../theme/appTheme';
 import { NamespaceRow } from '../clusterFleetApi';
 
 const useStyles = makeStyles(() => ({
-  card: { background: elliottTokens.surface, border: `1px solid ${elliottTokens.border}` },
+  card: { background: appTokens.surface, border: `1px solid ${appTokens.border}` },
   header: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    padding: '12px 16px', borderBottom: `1px solid ${elliottTokens.border}`,
+    padding: '12px 16px', borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
-  cluster: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 11, color: elliottTokens.mute },
+  cluster: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 11, color: appTokens.mute },
   meta: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
-    fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: elliottTokens.mute,
+    fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', color: appTokens.mute,
   },
   row: {
     display: 'grid',
     gridTemplateColumns: '120px 1fr auto',
     columnGap: 12,
     padding: '12px 16px',
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
     alignItems: 'baseline',
     '&:last-child': { borderBottom: 'none' },
   },
   ns: { fontWeight: 600, fontSize: 13 },
-  services: { color: elliottTokens.mute, fontSize: 12, fontFamily: '"JetBrains Mono", ui-monospace, monospace' },
+  services: { color: appTokens.mute, fontSize: 12, fontFamily: '"JetBrains Mono", ui-monospace, monospace' },
   count: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 12 },
-  countOk: { color: elliottTokens.ok },
+  countOk: { color: appTokens.ok },
 }));
 
 export const TopNamespaces = ({
@@ -45,7 +45,7 @@ export const TopNamespaces = ({
         <div className={classes.meta}>by pod count</div>
       </div>
       {rows.length === 0 && (
-        <div className={classes.row} style={{ color: elliottTokens.mute }}>
+        <div className={classes.row} style={{ color: appTokens.mute }}>
           <span>—</span><span>No pods</span><span />
         </div>
       )}

@@ -10,14 +10,14 @@ import useAsync from 'react-use/lib/useAsync';
 import { useState, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import type { ObjectsByEntityResponse } from '@backstage/plugin-kubernetes-common';
-import { elliottTokens } from '../../../theme/elliottTheme';
+import { appTokens } from '../../../theme/appTheme';
 import { podsIn, deploysIn } from '../data';
 
 const useStyles = makeStyles(() => ({
-  card: { background: elliottTokens.surface, border: `1px solid ${elliottTokens.border}` },
+  card: { background: appTokens.surface, border: `1px solid ${appTokens.border}` },
   header: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    padding: '12px 16px', borderBottom: `1px solid ${elliottTokens.border}`,
+    padding: '12px 16px', borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   filterRow: { display: 'flex', gap: 6 },
@@ -25,28 +25,28 @@ const useStyles = makeStyles(() => ({
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase',
     padding: '3px 8px', cursor: 'pointer', userSelect: 'none',
-    border: `1px solid ${elliottTokens.borderHard}`,
-    background: elliottTokens.surface,
-    color: elliottTokens.mute,
+    border: `1px solid ${appTokens.borderHard}`,
+    background: appTokens.surface,
+    color: appTokens.mute,
   },
   chipOn: {
-    background: elliottTokens.ink,
-    color: elliottTokens.surface,
-    borderColor: elliottTokens.ink,
+    background: appTokens.ink,
+    color: appTokens.surface,
+    borderColor: appTokens.ink,
   },
   row: {
     display: 'grid',
     gridTemplateColumns: '52px 110px 1fr',
     columnGap: 12,
     padding: '10px 16px',
-    borderBottom: `1px solid ${elliottTokens.border}`,
+    borderBottom: `1px solid ${appTokens.border}`,
     alignItems: 'baseline',
     fontSize: 13,
     '&:last-child': { borderBottom: 'none' },
   },
   ago: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
-    fontSize: 12, color: elliottTokens.mute,
+    fontSize: 12, color: appTokens.mute,
   },
   reason: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
@@ -56,11 +56,11 @@ const useStyles = makeStyles(() => ({
   swatch: { width: 8, height: 8, display: 'inline-block' },
   involved: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
-    fontSize: 11, color: elliottTokens.ink2,
+    fontSize: 11, color: appTokens.ink2,
     marginBottom: 2,
   },
-  message: { color: elliottTokens.ink2, fontSize: 12.5 },
-  empty: { padding: '14px 16px', color: elliottTokens.mute, fontSize: 12.5 },
+  message: { color: appTokens.ink2, fontSize: 12.5 },
+  empty: { padding: '14px 16px', color: appTokens.mute, fontSize: 12.5 },
 }));
 
 const ago = (iso: string): string => {
@@ -181,7 +181,7 @@ export const EntityEvents = ({
         <div className={classes.empty}>No events match.</div>
       )}
       {shown.map(e => {
-        const tone = e.type === 'Warning' ? elliottTokens.warn : elliottTokens.ok;
+        const tone = e.type === 'Warning' ? appTokens.warn : appTokens.ok;
         return (
           <div key={e.id} className={classes.row}>
             <span className={classes.ago}>{ago(e.occurredAt)}</span>

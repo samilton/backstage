@@ -1,54 +1,54 @@
 // packages/app/src/modules/k8s/entity/widgets/EntityWorkloads.tsx
 
 import { makeStyles } from '@material-ui/core/styles';
-import { elliottTokens } from '../../../theme/elliottTheme';
+import { appTokens } from '../../../theme/appTheme';
 import { WorkloadRow, fmtAge } from '../data';
 
 const useStyles = makeStyles(() => ({
-  card: { background: elliottTokens.surface, border: `1px solid ${elliottTokens.border}` },
+  card: { background: appTokens.surface, border: `1px solid ${appTokens.border}` },
   header: {
     display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    padding: '12px 16px', borderBottom: `1px solid ${elliottTokens.border}`,
+    padding: '12px 16px', borderBottom: `1px solid ${appTokens.border}`,
   },
   title: { fontSize: 13, fontWeight: 600 },
   meta: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: elliottTokens.mute,
+    color: appTokens.mute,
   },
   table: { width: '100%', borderCollapse: 'collapse' },
   th: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase',
-    color: elliottTokens.mute, background: elliottTokens.surface2,
+    color: appTokens.mute, background: appTokens.surface2,
     padding: '8px 14px', textAlign: 'left', fontWeight: 600,
   },
-  td: { padding: '10px 14px', fontSize: 12.5, borderBottom: `1px solid ${elliottTokens.border}` },
+  td: { padding: '10px 14px', fontSize: 12.5, borderBottom: `1px solid ${appTokens.border}` },
   tdMono: { fontFamily: '"JetBrains Mono", ui-monospace, monospace', fontSize: 12 },
   cluster: { display: 'flex', alignItems: 'center', gap: 8 },
   swatch: { width: 8, height: 8, display: 'inline-block' },
   region: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
-    fontSize: 10, color: elliottTokens.mute,
+    fontSize: 10, color: appTokens.mute,
   },
   kindChip: {
     fontFamily: '"JetBrains Mono", ui-monospace, monospace',
     fontSize: 10, padding: '2px 6px',
-    background: elliottTokens.surface2,
-    border: `1px solid ${elliottTokens.borderHard}`,
+    background: appTokens.surface2,
+    border: `1px solid ${appTokens.borderHard}`,
   },
   bar: { display: 'inline-flex', alignItems: 'center', gap: 8 },
   barTrack: {
-    width: 120, height: 8, background: elliottTokens.surface2,
-    border: `1px solid ${elliottTokens.borderHard}`,
+    width: 120, height: 8, background: appTokens.surface2,
+    border: `1px solid ${appTokens.borderHard}`,
   },
   barFill: { height: '100%' },
 }));
 
 const STATUS_COLOR: Record<WorkloadRow['status'], string> = {
-  healthy:  elliottTokens.ok,
-  degraded: elliottTokens.warn,
-  down:     elliottTokens.bad,
+  healthy:  appTokens.ok,
+  degraded: appTokens.warn,
+  down:     appTokens.bad,
 };
 
 const imageTag = (img?: string): string => {
@@ -85,7 +85,7 @@ export const EntityWorkloads = ({
         </thead>
         <tbody>
           {rows.length === 0 && (
-            <tr><td className={classes.td} colSpan={7} style={{ color: elliottTokens.mute }}>
+            <tr><td className={classes.td} colSpan={7} style={{ color: appTokens.mute }}>
               {loading ? 'Loading…' : 'No workloads found.'}
             </td></tr>
           )}
