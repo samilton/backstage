@@ -12,6 +12,10 @@ app:
     - nav-item:catalog: false
     - nav-item:scaffolder: false
 
+    # Replace the stock catalog index page with packages/app/src/modules/catalog.
+    # Entity detail pages remain provided by @backstage/plugin-catalog.
+    - page:catalog: false
+
     # The catalog stays on /catalog. The Elliott home module owns /.
     # (Re-enable the path override below if you want to drop the home page
     #  and put the catalog at the root again.)
@@ -30,6 +34,25 @@ app:
     # so the id is namespaced as `kubernetes/kubernetes` (not just `kubernetes`).
     - entity-content:kubernetes/kubernetes: false
 
+    # Note: we *don't* disable `sub-page:scaffolder/templates` here.
+    # Our scaffolderModule registers a SubPage with the same id, and the
+    # frontend system's override semantics let the later-registered
+    # extension win. Disabling the default also nukes our replacement
+    # (same id), which makes /create fall through to /create/tasks
+    # because PageBlueprint redirects its index route to the first
+    # remaining page tab.
+
+    # Hide the four scaffolder admin tabs from /create. Tasks moves to
+    # /admin/tasks/:taskId (where the wizard's post-submit redirect now
+    # points). Actions / Editor / Templating Extensions are stubbed in
+    # the /admin landing page until we have proper replacements; the
+    # underlying Backstage components live behind private package
+    # paths so re-mounting them cleanly is non-trivial.
+    - sub-page:scaffolder/tasks: false
+    - sub-page:scaffolder/actions: false
+    - sub-page:scaffolder/editor: false
+    - sub-page:scaffolder/templating-extensions: false
+
 organization:
   name: My Company
 
@@ -40,6 +63,12 @@ backend:
   # auth:
   #   keys:
   #     - secret: ${BACKEND_SECRET}
+  auth:
+    externalAccess:
+      - type: static
+        options:
+          token: ${MCP_TOKEN}
+          subject: mcp-client
   baseUrl: http://localhost:7007
   listen:
     port: 7007
@@ -64,6 +93,7 @@ backend:
       - auth
       - catalog
       - scaffolder
+      - mcp-actions
   # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
 
 integrations:
@@ -142,6 +172,28 @@ catalog:
     # Local example template
     - type: file
       target: ../../examples/template/template.yaml
+      rules:
+        - allow: [Template]
+
+    # Demo templates so /create has variety to show. All are no-op
+    # `debug:log` scaffolders — safe to "Use". Swap for real templates
+    # as the platform team builds them out.
+    - type: file
+      target: ../../examples/templates/demo-templates.yaml
+      rules:
+        - allow: [Template]
+
+    # Live demo template: scaffolder → NSQ ops.requests → ops-controller
+    # Temporal workflow → nsqd /topic/create. Mirrors /admin/topics/new.
+    - type: file
+      target: ../../examples/templates/create-nsq-topic.yaml
+      rules:
+        - allow: [Template]
+
+    # Live demo template: scaffolder → NSQ ops.requests → ops-controller
+    # Temporal workflow → namespace-dispatch.log (Pulumi later).
+    - type: file
+      target: ../../examples/templates/namespace-request.yaml
       rules:
         - allow: [Template]
 
